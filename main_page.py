@@ -11,3 +11,7 @@ folium.Marker(
 
 # call to render Folium map in Streamlit
 st_data = st_folium(m, width=725)
+
+
+
+### geojson map like: https://folium.streamlit.app/geojson_popup, https://python-visualization.github.io/folium/latest/user_guide/geojson/geojson_popup_and_tooltip.html
