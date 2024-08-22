@@ -1,1 +1,22 @@
 Data sources and info
+Potentially useful: https://data.ca.gov/dataset/mssa-detail
+
+  Can I stream directly from it ?? e.g. this URL to csv file: 
+  For each of 19 geographic regions within California, overall and by demographic group, this dataset provides the headcounts and prevalence, average Medicare spending, and co-occurring chronic conditions.
+https://data.chhs.ca.gov/dataset/45c1b781-bb5a-4f2e-932d-7780d5380f73/resource/d644f1b2-6c99-4de2-8440-10f3e9d3f77d/download/original_medicare_chronic_conditions_by_region_file_2_20231213.csv
+
+
+Potentially useful: https://www.nhgis.org/
+https://nhis.ipums.org/nhis/
+Health Data MAP: https://www.californiahealthmaps.org/?areatype=ctazone&address=&sex=Both&site=AllSite&race=&year=05yr&overlays=labels&choropleth=AAIR
+
+CalPIP: https://calpip.cdpr.ca.gov/main.cfm
+--> Data Archives: https://files.cdpr.ca.gov/pub/outgoing/pur_archives/
+
+---> Access to PUR records of CA, year-by-year
+https://calpip.cdpr.ca.gov/infodocs.cfm?page=navigate#navpur
+https://calpip.cdpr.ca.gov/infodocs.cfm?page=glossary
+
+About chemicals: 
+Toxicity data for Air (Acute and Chronic Reference Exposure Levels (RELs)), Water (Public Health Goals (PHGs)), Soils (California Human Health Screening Levels (CHHSLs)) and Proposition...
+https://data.ca.gov/dataset/7b2b5d26-9407-4368-8744-d5b659024dd7/resource/0d417a2b-6559-4725-820f-add7c57a8bc9/download/oehha-toxicity-criteria-database-20240328.csv
