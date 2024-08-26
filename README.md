@@ -1,13 +1,35 @@
 # pesticides
 ## Data sources
-https://www.stanag.org/public-information-records.shtm
 
-https://data-cdegis.opendata.arcgis.com/datasets/cce0dfa63e1f40f89f678cb205fb7168_0/explore
-https://data-cdegis.opendata.arcgis.com/datasets/d5cb03b3d973473ebb86b24005a0e118_0/explore?location=37.126232%2C-121.546979%2C8.69
-https://data-cdegis.opendata.arcgis.com/datasets/61a4260e68b14a5ab91daf27d4415e7d_0/explore?location=37.542678%2C-121.035296%2C10.92
 
-Future: Add legend to streamlit folium :
+[Stanislaus Agricultural Commissioner](https://www.stanag.org/public-information-records.shtm)
+
+California Data: [Private Schools](https://data-cdegis.opendata.arcgis.com/datasets/d5cb03b3d973473ebb86b24005a0e118_0/explore?location=37.126232%2C-121.546979%2C8.69)
+
+[Public Schools](https://data-cdegis.opendata.arcgis.com/datasets/61a4260e68b14a5ab91daf27d4415e7d_0/explore?location=37.542678%2C-121.035296%2C10.92)
+
+
+## To add in future
+Data Sources separate page.
+
+Highlight schools/pesticide applications within X distance (Also add population data)
+
+Filter pesticide applications by school day & kind.
+
+Dominant wind direction
+
+
+
+Add legend to streamlit folium :
 https://stackoverflow.com/questions/77931522/how-to-add-a-legend-to-streamlit-folium-map-when-there-is-few-discrete-colors
+
+
+
+
+
+
+## Notes
+
 # Import necessary functions from branca library
 from branca.element import Template, MacroElement
 
