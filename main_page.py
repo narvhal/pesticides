@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import unidecode
 
-st.set_page_config(layout="wide" })
+st.set_page_config(layout="wide" )
 
 
 
