@@ -14,6 +14,10 @@ st.set_page_config(layout="wide" )
 
 
 fn ='https://raw.githubusercontent.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp'
+
+response = requests.get(fn)
+gdf = gpd.read_file(response)
+
 fbs = gpd.read_file(fn)
 
 
