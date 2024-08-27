@@ -67,11 +67,11 @@ def prepare_df_from_stanag():
     if flag_gh:
         fp_agcomm = r"/data_sources/AgComm_Stanislaus"
         fn ='/vsicurl/https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
-        fbs = gpd.read_file(fp_agcomm + r"/field_boundaries/Crops_02_12_2024.shp")
+        fbs = gpd.read_file(fn)
         fn = '/vsicurl/https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/AgComm_Stanislaus/allpurs2023.xlsb'
-        pur = pd.read_excel(fp_agcomm + r"/allpurs2023.xlsb")
+        pur = pd.read_excel(fn)
         fn = '/vsicurl/https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/AgComm_Stanislaus/AllSites2023.xlsb'
-        sites = pd.read_excel(fp_agcomm + r"/AllSites2023.xlsb")
+        sites = pd.read_excel(fn)
 
     else:
         fp_agcomm = r".\data_sources\AgComm_Stanislaus"
