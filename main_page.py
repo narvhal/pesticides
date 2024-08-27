@@ -9,16 +9,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import unidecode
 from py_functions.pyfuncs_data_load import *
+import fiona
 
 st.set_page_config(layout="wide" )
 
+fn =r"https://github.com/narvhal/pesticides/blob/6db51365c915330f56b0bb7f40348a88e28d3521/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
+with fiona.open(fn) as shp:
+    ax = geo.plot()
+    gdf = shp
 
-fn =r"https://raw.githubusercontent.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
+# response = requests.get(fn)
+# gdf = gpd.read_file(response)
 
-response = requests.get(fn)
-gdf = gpd.read_file(response)
-
-fbs = gpd.read_file(fn)
+# fbs = gpd.read_file(fn)
 
 
 permittee = 'permittee'
