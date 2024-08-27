@@ -29,7 +29,7 @@ df, fbs = prepare_df_from_stanag()
 
 selcol = None
 selcolval = None
-with st.popover("Select filter")
+with st.popover("Select filter"):
     for d in df.columns.to_list():
         selcol = st.checkbox(str(d))
     if selcol is not None:
@@ -69,7 +69,7 @@ m = folium.Map(location=[37.5, -120.8], zoom_start=5)
 
 dfc = None
 colorcol = None
-with st.popover("Select column to colorize map")
+with st.popover("Select column to colorize map"):
     st.write("PUR data: ")
     for d in df.columns.to_list():
         colorcol = st.checkbox(str(d))
