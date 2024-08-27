@@ -50,8 +50,8 @@ def print_col_uniques(df):
 def prepare_school_pts():
     flag_gh = True
     if flag_gh:
-        fpsch_priv = "https://raw.githubusercontent.com/narvhal/pesticides/data_sources/CA_Dept_Education/California_Private_Schools_Stanislaus.geojson"
-        fpsch_pub ="https://raw.githubusercontent.com/narvhal/pesticides/data_sources/CA_Dept_Education/California_Public_Schools_Stanislaus.geojson"
+        fpsch_priv = "https://github.com/narvhal/pesticides/raw/main/data_sources/CA_Dept_Education/California_Private_Schools_Stanislaus.geojson"
+        fpsch_pub ="https://github.com/narvhal/pesticides/raw/main/data_sources/CA_Dept_Education/California_Public_Schools_Stanislaus.geojson"
     else:
         fpsch = r".\pesticides\data_sources\CA_Dept_Education"
         schl_priv =fpsch + r"\California_Private_Schools.geojson"
