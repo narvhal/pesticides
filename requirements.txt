@@ -6,3 +6,4 @@ unidecode
 branca
 matplotlib
 fiona
+pyxlsb
