@@ -48,12 +48,17 @@ def print_col_uniques(df):
         st.write("\t", len(df[col].unique()), " unique values")
 
 def prepare_school_pts():
-    fpsch = r".\pesticides\data_sources\CA_Dept_Education"
-    schl_priv = r"\California_Private_Schools.geojson"
-    schl_pub = r"\SchoolSites2324_1647203305444761460.geojson"
+    flag_gh = True
+    if flag_gh:
+        fpsch_priv = "https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/CA_Dept_Education/California_Private_Schools_Stanislaus.geojson"
+        fpsch_pub ="https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/CA_Dept_Education/California_Public_Schools_Stanislaus.geojson"
+    else:
+        fpsch = r".\pesticides\data_sources\CA_Dept_Education"
+        schl_priv =fpsch + r"\California_Private_Schools.geojson"
+        schl_pub = fpsch + r"\SchoolSites2324_1647203305444761460.geojson"
 
-    spriv = geopandas.read_file(fpsch+schl_priv)
-    spub = geopandas.read_file(fpsch+schl_pub)
+    spriv = geopandas.read_file(fpsch_priv)
+    spub = geopandas.read_file(fpsch_pub)
     return spriv, spub
 
 def prepare_df_from_stanag():
@@ -61,8 +66,11 @@ def prepare_df_from_stanag():
     flag_gh = True
     if flag_gh:
         fp_agcomm = r"/data_sources/AgComm_Stanislaus"
+        fn ='/vsicurl/https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
         fbs = gpd.read_file(fp_agcomm + r"/field_boundaries/Crops_02_12_2024.shp")
+        fn = '/vsicurl/https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/AgComm_Stanislaus/allpurs2023.xlsb'
         pur = pd.read_excel(fp_agcomm + r"/allpurs2023.xlsb")
+        fn = '/vsicurl/https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/AgComm_Stanislaus/AllSites2023.xlsb'
         sites = pd.read_excel(fp_agcomm + r"/AllSites2023.xlsb")
 
     else:
