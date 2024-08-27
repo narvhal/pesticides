@@ -2,11 +2,16 @@
 ## Data sources
 
 
-[Stanislaus Agricultural Commissioner](https://www.stanag.org/public-information-records.shtm)
+[Stanislaus Agricultural Commissioner, PUR up to 2024](https://www.stanag.org/public-information-records.shtm)
 
-California Data: [Private Schools](https://data-cdegis.opendata.arcgis.com/datasets/d5cb03b3d973473ebb86b24005a0e118_0/explore?location=37.126232%2C-121.546979%2C8.69)
+[CalPIP](https://calpip.cdpr.ca.gov/main.cfm)
+    [State-wide PUR Data Archives, up to 2022](https://files.cdpr.ca.gov/pub/outgoing/pur_archives/)
 
-[Public Schools](https://data-cdegis.opendata.arcgis.com/datasets/61a4260e68b14a5ab91daf27d4415e7d_0/explore?location=37.542678%2C-121.035296%2C10.92)
+
+California Data:
+    [Private Schools](https://data-cdegis.opendata.arcgis.com/datasets/d5cb03b3d973473ebb86b24005a0e118_0/explore?location=37.126232%2C-121.546979%2C8.69)
+
+    [Public Schools](https://data-cdegis.opendata.arcgis.com/datasets/61a4260e68b14a5ab91daf27d4415e7d_0/explore?location=37.542678%2C-121.035296%2C10.92)
 
 
 ## To add in future
@@ -18,7 +23,7 @@ Filter pesticide applications by school day & kind.
 
 Dominant wind direction
 
-
+select different counties.
 
 Add legend to streamlit folium :
 https://stackoverflow.com/questions/77931522/how-to-add-a-legend-to-streamlit-folium-map-when-there-is-few-discrete-colors

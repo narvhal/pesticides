@@ -7,6 +7,8 @@ Potentially useful: https://data.ca.gov/dataset/mssa-detail
 https://data.chhs.ca.gov/dataset/45c1b781-bb5a-4f2e-932d-7780d5380f73/resource/d644f1b2-6c99-4de2-8440-10f3e9d3f77d/download/original_medicare_chronic_conditions_by_region_file_2_20231213.csv
 
 
+Meridian, Township, sections: https://web.gccaz.edu/~lynrw95071/Township%20Range%20Explanation.html
+
 Potentially useful: https://www.nhgis.org/
 https://nhis.ipums.org/nhis/
 Health Data MAP: https://www.californiahealthmaps.org/?areatype=ctazone&address=&sex=Both&site=AllSite&race=&year=05yr&overlays=labels&choropleth=AAIR

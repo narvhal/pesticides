@@ -1,0 +1,311 @@
+pur & sites from Stan ag comm
+
+Site District
+	 03
+	 ['03' '01' '02' nan '04' 'PILOT' '00']
+Block ID
+	 nan
+	 [nan 'C1' 'M1']
+Source
+	 webxml
+	 ['webxml' 'webpublic' 'webbatch' 'webcounty' 'desktop']
+Site Location
+	 NE COR BLAKER & BRADBURY
+	 6013  unique values
+Site Name
+	 OUTSIDE GWPA
+	 1163  unique values
+Meridian
+	 M
+	 ['M' nan]
+Township
+	 05S
+	 ['05S' '03S' '06S' '04S' '02S' '01N' '01S' '07S' '08S' '09S' '03N' '02N'
+ nan]
+Range
+	 09E
+	 ['09E' '08E' '10E' '12E' '11E' '07E' '06E' '13E' '05E' nan '14E']
+Section
+	 34.0
+	 [34. 33.  6. 36. 11. 15.  8. 21. 16. 18. 35. 19.  2.  1. 20.  9. 32. 25.
+ 26. 27.  5. 28. 24. 14.  7. 17. 13. 22.  3. 29. 30. 23. 31.  4. 12. 10.
+ nan]
+Application Date
+	 44929
+	 363  unique values
+Application Time
+	 3:56 PM
+	 696  unique values
+Commodity Code
+	 22007
+	 [22007  3001 22006  5004 23001  5000  3009 24011   155  4001 22000    40
+ 29143 29125  5002  5001 29109 13501 13014 13025  8015 29123 29137 13021
+ 13012  5003  5005 13031 14004 29136   154 14010  3011 13502 13011 13010
+ 13009 28014 13022 66000   152   156 13024 29122 10008 10011  3008 13005
+ 14018 22005 29129 15001 40008  8006  1016 67000    90 28035 28012 14007
+  8020 14011 22013 28072 22011 13007 10002 13015 29141 22004 33002 33007
+  5505 29119 11005  2000 15003 22035  6015  3004  1009    30    10 61001
+ 61008   153 28024  6018]
+Commodity
+	 WHEAT FOR/FOD
+	 100  unique values
+Pre-plant
+	 No
+	 ['No' 'Yes']
+Planted Amount
+	 19.0
+	 673  unique values
+Planted Units
+	 ACRES
+	 ['ACRES' 'CUBIC FEET' nan 'SQUARE FEET' 'MISCELLANEOUS UNITS']
+EPA Reg No
+	 228-143-AA-71368
+	 1226  unique values
+Product Name
+	 NUFARM RHOMENE MCPA BROADLEAF HERBICIDE
+	 1150  unique values
+Registration Expired
+	 nan
+	 [   nan 36891. 36892. 36886. 32143.]
+RMP
+	 True
+	 [True False nan]
+Quantity Used
+	 304.0
+	 9867  unique values
+Quantity Units
+	 Ounce
+	 ['Ounce' 'Pint' 'Gallon' 'Pounds' 'Quart' 'Grams' 'Kilograms' nan
+ 'Milliliters' 'Liters']
+Treated Amount
+	 19.0
+	 2237  unique values
+Treated Units
+	 ACRES
+	 ['ACRES' 'MISCELLANEOUS UNITS' 'SQUARE FEET' 'CUBIC FEET']
+Appl. Method
+	 Aircraft
+	 ['Aircraft' 'Ground' 'Other' 'Fumigation']
+Fume Code
+	 nan
+	 [  nan 1206. 1410. 1413. 1411. 1210. 1103. 1390. 1242. 1290.]
+Applicator Name
+	 BETTENCOURT FLYING SERVICE, INC.
+	 111  unique values
+Applicator License #
+	 31030
+	 113  unique values
+Applicator License Type
+	 PCM
+	 ['PCM' nan 'QAL' 'PCB' 'PAC' 'QAC']
+Applicator Address
+	 1066 S. BERT CRANE
+
+ATWATER
+CA
+95301
+	 106  unique values
+Days Reentry
+	 nan
+	 [ nan  1.   2.   0.   0.5 12.   3.   0.2  0.3  7.  24.   0.6  4.   0.4
+ 48.  96. ]
+Days Pre-Harvest
+	 nan
+	 [       nan 1.4000e+01 0.0000e+00 7.0000e+00 6.0000e+01 3.0000e+01
+ 4.5000e+01 4.5002e+04 2.5000e+01 3.5000e+01 2.8000e+01 1.0000e+00
+ 1.5000e+02 2.1000e+01 1.5000e+01 9.0000e+01 7.5000e+01 3.6500e+02
+ 3.0000e+00 5.0000e+01 5.0000e+00 1.0000e+01 2.4000e+01 1.7000e+01]
+Document#
+	 12942771
+	 33987  unique values
+Submitted By
+	 nan
+	 [nan 'GROWER APPLIED' 'Art Padilla' 'Galen Winders' 'Pete Gaarde'
+ 'Eric Muller' 'David  Bakker' 'Mel Machado' 'David Vargas'
+ 'Patrick Danipour' 'Gerald W. Coburn III' 'tim baker' 'Tim Baker'
+ 'Duane Heiny' 'David Sarasqueta' 'Hali Bream' 'Ronald Crump'
+ 'Freddie Galvan' 'MIKE BAVA' 'Carolina Gutierrez' 'STEWART JOHNSON'
+ 'Alfonso Chavez' 'Marten Oliveira' 'Tania Herrera' 'Peter Murphy'
+ 'c newsome']
+Submitted Date
+	 nan
+	 [   nan 44951. 44957. 44958. 44965. 44966. 44969. 44987. 44991. 44994.
+ 44995. 45006. 45007. 45012. 45025. 45058. 45062. 45065. 45071. 45090.
+ 45091. 45105. 45116. 45117. 45127. 45139. 45140. 45146. 45147. 45148.
+ 45152. 45156. 45177. 45214. 45283. 45291. 45204. 45261. 44963. 45014.
+ 44986. 45150. 45209. 45096. 45074. 45191. 45051. 45180. 45241. 45297.
+ 45027. 45089. 45245. 45028. 45257. 45170. 45243. 45029. 45286. 45033.
+ 45271. 45063. 44981. 45100. 45166.]
+Entered By
+	 agrian_data
+	 216  unique values
+Time Stamp Date
+	 44931.55165509259
+	 31350  unique values
+Time Stamp Time
+	 1:14 PM
+	 1245  unique values
+Rpt Status
+	 ACC
+	 ['ACC' 'REJ' 'VAL' 'INC' 'OK' 'ERR']
+Sub Status
+	 DPR
+	 ['DPR' 'DFT' 'CTY' 'SUB']
+School Notify
+	 Not Required
+	 ['Not Required' 'Required']
+permit_num
+	 5008573.0
+	 1554  unique values
+permittee
+	 ROESTAR DAIRY
+	 1559  unique values
+site_id
+	 3834A2
+	 5263  unique values
+Commodity Code0
+	 22007
+	 [22007  3001 22006  5004 23001  5000  3009 24011   155  4001 22000    40
+ 29143 29125  5002  5001 29109 13501 13014 13025  8015 29123 29137 13021
+ 13012  5003  5005 13031 14004 29136   154 14010  3011 13502 13011 13010
+ 13009 28014 13022 66000   152   156 13024 29122 10008 10011  3008 13005
+ 14018 22005 29129 15001 40008  8006  1016 67000    90 28035 28012 14007
+  8020 14011 22013 28072 22011 13007 10002 13015 29141 22004 33002 33007
+  5505 29119 11005  2000 15003 22035  6015  3004  1009    30    10 61001
+ 61008   153 28024  6018]
+Commodity Code1
+	 0
+	 [ 0 89 38 10 60 42  4  1 20 56]
+Permit Type
+	 RMP
+	 ['RMP' 'Op-Id' nan]
+Version
+	 1.0
+	 [ 1.  2.  4.  3.  6. nan  5.  7. 13.  9.]
+Revision Type
+	 Renewal
+	 ['Renewal' 'Supplement' 'New Permit' nan]
+Version Date
+	 44917.37494212963
+	 1454  unique values
+Signed
+	 True
+	 [True False nan]
+Operator
+	 ROESTAR DAIRY
+	 1454  unique values
+Permit Status
+	 Issued
+	 ['Issued' nan]
+Agent Name
+	 ROEST, ARIE
+	 1364  unique values
+Mailing Address
+	 3812 S. MORGAN RD
+	 1418  unique values
+City
+	 TURLOCK
+	 ['TURLOCK' 'MODESTO' 'CERES' 'HICKMAN' 'JAMESTOWN' 'DENAIR' 'KEYES'
+ 'HUGHSON' 'HILMAR' 'OAKDALE' 'EMPIRE' 'MANTECA' 'PATTERSON' 'VERNAILIS'
+ 'SALIDA' 'WATERFORD' 'HURON' 'RIPON' 'WINTON' 'CROWS LANDING' 'WESTLEY'
+ nan 'MADERA' 'SACRAMENTO' 'FREMONT' 'FRESNO' 'INGLEWOOD' 'NEWMAN'
+ 'ESCALON' 'STOCKTON' 'KINGSBURG' 'DELHI' 'MOUNTAIN HOUSE' 'TRACY'
+ 'Hughson' 'ATWATER' 'STEVINSON' 'LIVINGSTON' 'FARMINGTON' 'Livermore'
+ 'CLOVIS' 'MERCED' 'LA GRANGE' 'GRIMES' 'GUSTINE' 'RIVERBANK' 'COVINGTON'
+ 'LIVERMORE' 'LIVE OAK' 'SAN RAMON' 'Fremont' 'SANGER' 'BAKERSFIELD'
+ 'KNIGHTS FERRY' 'Turlock' 'VERNALIS' 'LATHROP' 'CHOWCHILLA'
+ 'COLLEGEVILLE' 'SAN BRUNO' 'LOCKEFORD' 'ACAMPO' 'ANDERSON' 'WOODLAND'
+ 'WASCO' 'LINDEN' 'Modesto' 'CRESSEY' 'SANTA MARIA' 'MOUNTAIN VIEW'
+ 'HANFORD' 'ALTAVILLE' 'SNELLING' 'Ceres' 'Ripon' 'PETALUMA'
+ 'GARDEN VALLEY' 'PARKER']
+State
+	 CA
+	 ['CA' nan 'OH' 'CO']
+Zip
+	 95380
+	 101  unique values
+Issue Date
+	 44917.0
+	 288  unique values
+Effective Date
+	 44927.0
+	 217  unique values
+Expiration Date
+	 45291.0
+	 [45291. 45657. 46022.    nan 46387. 45290.]
+Issuing Officer
+	 AmitS
+	 ['AmitS' 'melaniep' 'LarrisaC' 'amyl' 'cristinag' 'josephg' 'ANDREWK'
+ 'JonathanB' 'maryc' 'christiner' 'ClaudiaH' 'harminders' 'christophere'
+ 'MARIAHL' nan 'trevorw' 'kimr' 'GregB' 'bilalb' 'DeanaG' 'JorgeG'
+ 'Juditha' 'forrestm' 'anaa' 'Melissal' 'carib']
+Status
+	 Issued
+	 ['Issued' nan]
+Ag/Non-Ag
+	 Ag-Use
+	 ['Ag-Use' nan]
+Permit District
+	 3.0
+	 [ 3.  1.  2.  0.  4. nan]
+Duration
+	 Seasonal
+	 ['Seasonal' 'Multi-Year' nan 'Job']
+Possession
+	 PCB Only
+	 ['PCB Only' 'Possess/Use' nan 'Possess']
+NOI Hours
+	 24.0
+	 [24. nan  0.]
+Employees
+	 Yes
+	 ['Yes' 'No' nan]
+Field Worker
+	 Permittee
+	 ['Permittee' nan 'Both' 'Contractor']
+Permit Active
+	 Active
+	 ['Active' nan]
+Units
+	 ACRES
+	 ['ACRES' nan 'CUBIC FEET' 'SQUARE FEET' 'MISCELLANEOUS UNITS']
+GIS Acres
+	 17.1368836776892
+	 6283  unique values
+Cropping Pattern
+	 None Specified
+	 ['None Specified' 'Perennial' 'Simple Rotational' 'Non-Production Ag' nan
+ 'Non-Ag' 'Interplanted' 'Single' 'Complex Rotational']
+Qualifier
+	 0.0
+	 [ 0. 89. 38. nan 60. 42.  4.  1. 10.]
+Planted Size
+	 19.0
+	 619  unique values
+From Date
+	 nan
+	 854  unique values
+To Date
+	 nan
+	 121  unique values
+Block
+	 nan
+	 [nan 'NORTH BRINK' '1' '2' '3' '4' 'Kiernan' 'Ranch 4' 'Curtner 50'
+ 'Wolfe Ranch' 'Newman' 'Lerno' 'SHED']
+Commodity Active
+	 Active
+	 ['Active' nan 'Inactive']
+permit_yr
+	 2023.0
+	 [2023. 2022. 2021. 2018.   nan 2025. 2024. 2020.]
+loc_narr
+	 NE COR BLAKER & BRADBURY
+	 5598  unique values
+size
+	 19.0
+	 616  unique values
+is_active
+	 Active
+	 ['Active' nan]
+
+
