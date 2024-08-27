@@ -62,16 +62,14 @@ def prepare_school_pts():
     return spriv, spub
 
 def prepare_df_from_stanag():
-
+    #### 2 Hr lesson:: NEED TO RIGHT CLICK ON "Raw" to copy link to download file on GITHUB
     flag_gh = True
     if flag_gh:
-        url = "https://github.com/user/repository/raw/main/path/to/shapefile.zip"
-        response = requests.get(url)
-        fn ='https://raw.githubusercontent.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp'
+        fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
         fbs = gpd.read_file(fn)
-        fn = 'https://raw.githubusercontent.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/allpurs2023.xlsb'
+        fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/allpurs2023.xlsb"
         pur = pd.read_excel(fn)
-        fn = 'https://raw.githubusercontent.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/AllSites2023.xlsb'
+        fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/AllSites2023.xlsb"
         sites = pd.read_excel(fn)
 
     else:
