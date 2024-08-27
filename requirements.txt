@@ -5,3 +5,4 @@ streamlit-folium
 unidecode
 branca
 matplotlib
+fiona
