@@ -50,8 +50,8 @@ def print_col_uniques(df):
 def prepare_school_pts():
     flag_gh = True
     if flag_gh:
-        fpsch_priv = "https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/CA_Dept_Education/California_Private_Schools_Stanislaus.geojson"
-        fpsch_pub ="https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/CA_Dept_Education/California_Public_Schools_Stanislaus.geojson"
+        fpsch_priv = "https://github.com/narvhal/pesticides/data_sources/CA_Dept_Education/California_Private_Schools_Stanislaus.geojson"
+        fpsch_pub ="https://github.com/narvhal/pesticides/data_sources/CA_Dept_Education/California_Public_Schools_Stanislaus.geojson"
     else:
         fpsch = r".\pesticides\data_sources\CA_Dept_Education"
         schl_priv =fpsch + r"\California_Private_Schools.geojson"
@@ -65,12 +65,11 @@ def prepare_df_from_stanag():
 
     flag_gh = True
     if flag_gh:
-        fp_agcomm = r"/data_sources/AgComm_Stanislaus"
-        fn ='/vsicurl/https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
+        fn ='/vsicurl/https://github.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp'
         fbs = gpd.read_file(fn)
-        fn = '/vsicurl/https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/AgComm_Stanislaus/allpurs2023.xlsb'
+        fn = '/vsicurl/https://github.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/allpurs2023.xlsb'
         pur = pd.read_excel(fn)
-        fn = '/vsicurl/https://github.com/narvhal/pesticides/blob/17412bcb7bed2c5aba3acc434065d402e0c50c58/data_sources/AgComm_Stanislaus/AllSites2023.xlsb'
+        fn = '/vsicurl/https://github.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/AllSites2023.xlsb'
         sites = pd.read_excel(fn)
 
     else:
