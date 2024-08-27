@@ -65,6 +65,8 @@ def prepare_df_from_stanag():
 
     flag_gh = True
     if flag_gh:
+        url = "https://github.com/user/repository/raw/main/path/to/shapefile.zip"
+        response = requests.get(url)
         fn ='https://raw.githubusercontent.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp'
         fbs = gpd.read_file(fn)
         fn = 'https://raw.githubusercontent.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/allpurs2023.xlsb'
