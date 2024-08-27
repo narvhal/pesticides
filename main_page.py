@@ -8,6 +8,7 @@ import branca
 import numpy as np
 import matplotlib.pyplot as plt
 import unidecode
+import py_functions
 
 st.set_page_config(layout="wide" )
 
