@@ -58,7 +58,7 @@ def prepare_school_pts():
 
 def prepare_df_from_stanag():
 
-    fp_agcomm = r"C:\Users\nariv\OneDrive\JupyterN\streamlit_local\pesticides\data_sources\AgComm_Stanislaus"
+    fp_agcomm = r".\data_sources\AgComm_Stanislaus"
 
     fbs = gpd.read_file(fp_agcomm + r"\field_boundaries\Crops_02_12_2024.shp")
     fbs.drop_duplicates(inplace = True, ignore_index=True)
