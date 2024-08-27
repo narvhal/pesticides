@@ -13,7 +13,7 @@ from py_functions.pyfuncs_data_load import *
 st.set_page_config(layout="wide" )
 
 
-fn ='https://raw.githubusercontent.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp'
+fn =r"https://raw.githubusercontent.com/narvhal/pesticides/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
 
 response = requests.get(fn)
 gdf = gpd.read_file(response)
