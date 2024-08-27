@@ -58,16 +58,23 @@ def prepare_school_pts():
 
 def prepare_df_from_stanag():
 
-    fp_agcomm = r".\data_sources\AgComm_Stanislaus"
+    flag_gh = True
+    if flag_gh:
+        fp_agcomm = r"/data_sources/AgComm_Stanislaus"
+        fbs = gpd.read_file(fp_agcomm + r"/field_boundaries/Crops_02_12_2024.shp")
+        pur = pd.read_excel(fp_agcomm + r"/allpurs2023.xlsb")
+        sites = pd.read_excel(fp_agcomm + r"/AllSites2023.xlsb")
 
-    fbs = gpd.read_file(fp_agcomm + r"\field_boundaries\Crops_02_12_2024.shp")
-    fbs.drop_duplicates(inplace = True, ignore_index=True)
+    else:
+        fp_agcomm = r".\data_sources\AgComm_Stanislaus"
+        fbs = gpd.read_file(fp_agcomm + r"\field_boundaries\Crops_02_12_2024.shp")
+        pur = pd.read_excel(fp_agcomm + r"\allpurs2023.xlsb")
+        sites = pd.read_excel(fp_agcomm + r"\AllSites2023.xlsb")
 
-    pur = pd.read_excel(fp_agcomm + r"\allpurs2023.xlsb")
-    pur.drop_duplicates(inplace = True, ignore_index = True)
 
-    sites = pd.read_excel(fp_agcomm + r"\AllSites2023.xlsb")
     sites.drop_duplicates(inplace = True, ignore_index = True)
+    pur.drop_duplicates(inplace = True, ignore_index = True)
+    fbs.drop_duplicates(inplace = True, ignore_index=True)
 
     pur_newcolnames = {'Permit #': permit_num,
      'Permitee': permittee,
