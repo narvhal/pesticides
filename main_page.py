@@ -20,7 +20,7 @@ toc = stoc()
 st.title("Stanislaus County Pesticide Use Reports and School Locations")
 
 
-st.header("1. Select filters")
+# st.header("1. Select filters")
 
 
 
@@ -53,7 +53,7 @@ mdf, rdf = add_geometry2(dfn, fbs)
 #################
 
 
-st.header("2. Example Map: Aerial applications")
+st.header("Example Map: Aerial applications")
 # center on Liberty Bell, add marker
 m = folium.Map(location=[37.5, -120.8], zoom_start=5)
 

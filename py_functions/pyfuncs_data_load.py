@@ -66,8 +66,8 @@ def prepare_school_pts():
         schl_priv =fpsch + r"\California_Private_Schools.geojson"
         schl_pub = fpsch + r"\SchoolSites2324_1647203305444761460.geojson"
 
-    spriv = geopandas.read_file(fpsch_priv)
-    spub = geopandas.read_file(fpsch_pub)
+    spriv = gpd.read_file(fpsch_priv)
+    spub = gpd.read_file(fpsch_pub)
     return spriv, spub
 
 def prepare_df_from_stanag():
