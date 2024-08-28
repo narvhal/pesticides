@@ -129,7 +129,7 @@ elif selection_type == "Product Name":
 #     dfn = filt_df(dfc, selcol, selcolval, type_compare="==")
 # else:
 #     dfn = dfc.copy()
-st.write(ccd2)
+# st.write(ccd2)
 lc, rc = st.columns([0.5, 0.5])
 
 if flag_keep_going:
@@ -191,7 +191,7 @@ if flag_keep_going:
 
     fig, ax = plt.subplots()
 
-    fig  = plot_geopandas_with_legend(fig, ax,
+    fig  = plot_geopandas_with_legend(fig, ax,flegend = False,
         polygon_dfs=polygon_dfs,
         polygon_colors=polygon_colors,
         polygon_labels=polygon_labels,
@@ -223,10 +223,10 @@ if flag_keep_going:
 
 
     dfcg = pd.DataFrame(dfc)
-    st.write(dfcg)
     st.table(dfcg)
     # st.dataframe(dfcg)
-
+    # st.write(dfcg)
+#
 
 flag_folium = False
 

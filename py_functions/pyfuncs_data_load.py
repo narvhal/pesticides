@@ -229,7 +229,7 @@ def join_buf_w_df(dfb, dfc, howjoin = "inner", pred = "intersects"):
 
 
 
-def plot_geopandas_with_legend(fig, ax,
+def plot_geopandas_with_legend(fig, ax, flegend = True,
     polygon_dfs=[], polygon_colors=[], polygon_labels=[],polygon_alphas= [], polygon_legend_flags=[],
     point_dfs=[], point_markers=[], point_colors=[], point_sizes=[], point_labels=[], point_legend_flags=[],
     categorized_dfs=[], category_columns=[], category_colors_list=[], category_legend_flags=[],
@@ -277,7 +277,7 @@ def plot_geopandas_with_legend(fig, ax,
     handles = category_handles + point_handles + polygon_handles + buffer_handles
 
     # Add the legend to the plot if any handles are present
-    if handles:
+    if flegend:
         plt.legend(handles=handles, title=title, fontsize=10, title_fontsize=15, bbox_to_anchor = (0.01, 0.8), loc = 2)
 
     # Hide the axes
