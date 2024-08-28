@@ -255,7 +255,7 @@ if flag_keep_going:
 
 
 
-    dfcg = pd.DataFrame(mdf)
+    dfcg = pd.DataFrame(df)
     # dfgg = pa.Table.from_pandas(dfcg)
     # st.dataframe(dfgg)
     st.dataframe(dfcg)
