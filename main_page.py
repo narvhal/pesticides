@@ -172,19 +172,19 @@ if flag_keep_going:
 
         # Filter df even more (this could be done before joining data)
         fig, ax = plt.subplots()
-        dfjpriv2.plot(color = 'blue', label = "mdf, school, inner join")
+        dfjpriv2.plot(ax = ax,color = 'blue', label = "mdf, school, inner join", legend = True)
         st.pyplot(fig)
         fig, ax = plt.subplots()
-        spubb.plot(color = 'purple', label = "school,mdf,  inner join")
+        dfjpub2.plot(ax = ax,color = 'purple', label = "school,mdf,  inner join", legend = True)
         st.pyplot(fig)
         fig, ax = plt.subplots()
-        dfjpriv3.plot(color = 'red', label = "mdf,sch,   left join")
+        dfjpriv3.plot(ax = ax,color = 'red', label = "mdf,sch,   left join", legend = True)
         st.pyplot(fig)
         fig, ax = plt.subplots()
-        dfjpriv4.plot(color = 'magenta', label = "sch, mdf,   left join")
+        dfjpriv4.plot(ax = ax,color = 'magenta', label = "sch, mdf,   left join", legend = True)
         st.pyplot(fig)
 
-
+        st.write(len(dfjpriv2), len(dfjpub2), len(dfjpriv3), len(dfjpriv4))
     # center on Liberty Bell, add marker
 
         # Example usage:
