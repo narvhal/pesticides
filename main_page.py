@@ -229,7 +229,7 @@ if flag_keep_going:
         buffer_alphas=buffer_alphas,
         buffer_legend_flags=buffer_legend_flags,
         title=f'Fields within {size} miles of school',
-        figsize=(6, 9)
+        figsize=[6, 9]
     )
 
     st.pyplot(fig=fig, use_container_width = False)
