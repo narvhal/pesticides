@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 #to_crs(crs =df.crs)
 
 
+@st.cache_data
 def list_cols(df, as_vert = True):
     if as_vert:
         dfc = df.columns.to_list()
@@ -23,7 +24,7 @@ def list_cols(df, as_vert = True):
         dfc = sorted(df.columns.to_list())
     return dfc
 
-
+@st.cache_data
 def load_standard_colnames():
     permittee = 'permittee'
     site_id = 'site_id'
@@ -35,21 +36,25 @@ def load_standard_colnames():
     return permittee, site_id, permit_num, permit_yr, loc_narr, is_active, size
 
 
+@st.cache_data
 def update_colnames(df, dfnewcolsdict):
     for key in list(dfnewcolsdict.keys()):
         df[dfnewcolsdict[key]] = df[key].copy()
         df.drop(key, axis = 1, inplace = True)
 
+@st.cache_data
 def unify_pn(df):
     if isinstance(df['permit_num'].iloc[0], str):
         df['permit_num'] = [int(cpm) for cpm in df['permit_num'] ]
     else:
         df['permit_num'] = [int(cpm) if not np.isnan(cpm) else cpm for cpm in df['permit_num'] ]
 
+@st.cache_data
 def unify_py(df):
     df['permit_yr'] = [int(py) for py in df['permit_yr']]
 
 
+@st.cache_data
 def print_col_uniques(df):
     for col in df.columns.to_list():
         st.write(col)
@@ -285,7 +290,7 @@ def normalize(s):
     return normalized
 
 
-
+@st.cache_data
 def make_legend(m):
     # Import necessary functions from branca library
     from branca.element import Template, MacroElement

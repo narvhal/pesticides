@@ -114,7 +114,7 @@ ccd2 = {ccnames[i]:ccc[i] for i in range(len(ccnames))}
 
 dfc["color_category"] = dfc[colorcol].map(ccd1)
 dfc["color"] = dfc[colorcol].map(ccd2)
-
+st.write(dfc[[colorcol, "color_category", "color"]])
 # with st.popover("Select column to colorize map"):
 #     st.write("PUR data: ")
 #     for i, d in enumerate(ccnames):
@@ -147,7 +147,7 @@ colormap = branca.colormap.StepColormap(
     caption=colorcol_desc,
 )
 
-m = folium.Map(location=[35.3, -97.6], zoom_start=7)
+m = folium.Map(location=[37.5, -120.86], zoom_start=7)
 
 popup = folium.GeoJsonPopup(
     fields=["Site Location", colorcol],
@@ -192,7 +192,8 @@ for _, r in dfc.iterrows():
     # the map might not be displayed
     sim_geo = gpd.GeoSeries(r["geometry"]).simplify(tolerance=0.001)
     geo_j = sim_geo.to_json()
-    geo_j = folium.GeoJson(data=geo_j, style_function=lambda x: {"fillColor": r["color"], "fillOpacity":0.4})
+    geo_j = folium.GeoJson(data=geo_j,
+        style_function=lambda x: {"fillColor": r["color"], "fillOpacity":0.4})
     folium.Popup(r["color_category"]).add_to(geo_j)
     geo_j.add_to(m)
 # m
