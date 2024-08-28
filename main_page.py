@@ -43,7 +43,7 @@ def get_new_values_list(key):
     st.write(st.session_state[key])
 
 st_list = ["Chemical Type", "Product Name"]
-lc, rc = st.columns([0.5, 0.5])
+lc,mc, rc = st.columns([0.3,0.3, 0.3])
 
 # Data vis options:
 with lc:
@@ -58,7 +58,8 @@ if selection_type == "Chemical Type":
     cni = range(4)
     cndd = {ccnames[i]:cni[i] for i in range(len(ccnames))}
     key = "multisel_products"
-    cname = st.multiselect("Select Products", ccnames, on_change = get_new_values_list(key), key = key )
+    with mc:
+        cname = st.multiselect("Select Products", ccnames, on_change = get_new_values_list(key), key = key )
 
     colorcol = "Product Name"
 
@@ -93,8 +94,8 @@ if selection_type == "Chemical Type":
 elif selection_type == "Product Name":
     maxsel = 5
     key = "multisel_products2"
-
-    cname = st.multiselect(f"Select up to {maxsel} Products", df["Product Name"].unique(), max_selections = maxsel, on_change = get_new_values_list(key), key = key)
+    with mc:
+        cname = st.multiselect(f"Select up to {maxsel} Products", df["Product Name"].unique(), max_selections = maxsel, on_change = get_new_values_list(key), key = key)
     if st.checkbox("Done selecting", key='done selecting pn'):
         dfc = df[df["Product Name"].isin(cname)].copy()
 
