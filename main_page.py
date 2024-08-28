@@ -13,7 +13,7 @@ import fiona
 import matplotlib.patches as mpatches
 from matplotlib.lines import Line2D
 from matplotlib_scalebar.scalebar import ScaleBar
-
+import pyarrow as pa
 st.set_page_config(layout="wide" )
 
 
@@ -215,7 +215,7 @@ if flag_keep_going:
         title=f'Fields within {size} miles of school',
 
     )
-
+    ax.get_legend().remove()
     fig.set_size_inches(6, 9)
 
     st.pyplot(fig)
@@ -223,7 +223,8 @@ if flag_keep_going:
 
 
     dfcg = pd.DataFrame(dfc)
-    st.table(dfcg)
+    dfgg = pa.Table.from_pandas(dfcg)
+    st.dataframe(dfgg)
     # st.dataframe(dfcg)
     # st.write(dfcg)
 #
