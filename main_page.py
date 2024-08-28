@@ -95,52 +95,52 @@ with st.popover("Select column to colorize map"):
 
 colorcol_desc = "description"
 if dfc is not None:
+    if colorcol in df.columns.to_list():
+
+        colormap = branca.colormap.LinearColormap(
+            vmin=dfc[colorcol].quantile(0.0),
+            vmax=dfc[colorcol].quantile(1),
+            colors=["red", "orange", "lightblue", "green", "darkgreen"],
+            caption=colorcol_desc,
+        )
+
+        m = folium.Map(location=[35.3, -97.6], zoom_start=4)
+
+        popup = folium.GeoJsonPopup(
+            fields=["Site Location", colorcol],
+            aliases=["Site Location", colorcol_desc],
+            localize=True,
+            labels=True,
+            style="background-color: yellow;",
+        )
+
+        tooltip = folium.GeoJsonTooltip(
+            fields=["Site Location", "Application Date", colorcol],
+            aliases=["Site Location", "Application Date", colorcol_desc],
+            localize=True,
+            sticky=False,
+            labels=True,
+            style="""
+                background-color: #F0EFEF;
+                border: 2px solid black;
+                border-radius: 3px;
+                box-shadow: 3px;
+            """,
+            max_width=800,
+        )
 
 
-    colormap = branca.colormap.LinearColormap(
-        vmin=dfc[colorcol].quantile(0.0),
-        vmax=dfc[colorcol].quantile(1),
-        colors=["red", "orange", "lightblue", "green", "darkgreen"],
-        caption=colorcol_desc,
-    )
+        g = folium.GeoJson(
+            dfc,
+            style_function=lambda x: {
+                "fillColor": colormap(x["properties"][colorcol])
+                if x["properties"][colorcol] is not None
+                else "transparent",
+                "color": "black",
+                "fillOpacity": 0.4,
+            },
+            tooltip=tooltip,
+            popup=popup,
+        ).add_to(m)
 
-    m = folium.Map(location=[35.3, -97.6], zoom_start=4)
-
-    popup = folium.GeoJsonPopup(
-        fields=["Site Location", colorcol],
-        aliases=["Site Location", colorcol_desc],
-        localize=True,
-        labels=True,
-        style="background-color: yellow;",
-    )
-
-    tooltip = folium.GeoJsonTooltip(
-        fields=["Site Location", "Application Date", colorcol],
-        aliases=["Site Location", "Application Date", colorcol_desc],
-        localize=True,
-        sticky=False,
-        labels=True,
-        style="""
-            background-color: #F0EFEF;
-            border: 2px solid black;
-            border-radius: 3px;
-            box-shadow: 3px;
-        """,
-        max_width=800,
-    )
-
-
-    g = folium.GeoJson(
-        dfc,
-        style_function=lambda x: {
-            "fillColor": colormap(x["properties"][colorcol])
-            if x["properties"][colorcol] is not None
-            else "transparent",
-            "color": "black",
-            "fillOpacity": 0.4,
-        },
-        tooltip=tooltip,
-        popup=popup,
-    ).add_to(m)
-
-    colormap.add_to(m)
+        colormap.add_to(m)
