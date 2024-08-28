@@ -111,11 +111,6 @@ elif selection_type == "Product Name":
         flag_keep_going= True
 
 
-
-
-
-st.write(catcol)
-
 #####################################1111111
 
 # if st.button("Only Aircraft-delivered Products"):
@@ -149,7 +144,7 @@ if flag_keep_going:
     sz_options = np.arange(10)*2 + 0.5
 
     key = "Select distance"
-    with rc:
+    with lc:
         def get_new_values_list3():
             st.write(st.session_state["Select distance"])
         size  = st.select_slider('Select distance from schools (miles)', options=sz_options, on_change =get_new_values_list3, key=key)
