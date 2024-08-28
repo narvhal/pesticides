@@ -76,7 +76,6 @@ def prepare_school_pts():
     return spriv, spub
 
 
-
 @st.cache_data
 def load_fbs():
     fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
@@ -180,7 +179,6 @@ def filt_df(df, selcol, val, type_compare="=="):
         print("Compare?? ")
     return dfn
 
-@st.cache_data
 def add_geometry2(df, gdf, on = ['site_id', 'permit_num']):
     # usually for PUR and SITES from STAN AG COmm
     # Create a composite key for merging
