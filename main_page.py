@@ -48,23 +48,24 @@ selcolval = "Aircraft"
 #     if selcolval in df[selcol].unique():
 
 dfn = filt_df(df, selcol, selcolval, type_compare="==")
+
+
 mdf, rdf = add_geometry2(dfn, fbs)
-
-
 
 
 # colormap.add_to(m)
 spriv, spub = prepare_school_pts()
 
-sz_options = np.arange(10)/2 + 0.5
+sz_options = np.arange(10)*2 + 0.5
 size  = st.select_slider('Select distance from Schools', options=sz_options)
 
 sprivb = school_buffer(spriv, size)
 spubb = school_buffer(spub, size)
-
+st.write(spriv)
+st.write(sprivb)
 dfjpriv = join_buf_w_df(sprivb, mdf, howjoin = "inner", pred = "intersects")
 dfjpub = join_buf_w_df(spubb, mdf, howjoin = "inner", pred = "intersects")
-
+st.write(dfjpriv)
 df = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=dataframesList[0].crs)
 # st.write("Filter applied!")
 #################
