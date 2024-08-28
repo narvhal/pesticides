@@ -34,7 +34,7 @@ permittee, site_id, permit_num, permit_yr, loc_narr, is_active, size =load_stand
 
 df, fbs = prepare_df_from_stanag()
 
-st.write(df.columns.to_list())
+# st.write(df.columns.to_list())
 # if st.button("Show filter options"):
 #     print_col_uniques(df)
 #################################
@@ -43,7 +43,7 @@ st.write(df.columns.to_list())
 st_list = ["Chemical Type", "Product Name"]
 
 # Data vis options:
-selection_type = st.selectbox("Select Products", st_list)
+selection_type = st.radio("Select Products", st_list)
 
 
 if selection_type == "Chemical Type":
@@ -76,7 +76,7 @@ if selection_type == "Chemical Type":
 
     ccd2 = {ccnames[i]:ccc[i] for i in range(len(ccnames))}
 
-    if st.button("Done selecting"):
+    if st.checkbox("Done selecting"):
 
         dfc = df[df["Product Name"].isin(list(cccddd.keys()))].copy()
 
@@ -87,7 +87,7 @@ if selection_type == "Chemical Type":
 elif selection_type == "Product Name":
     maxsel = 5
     cname = st.multiselect(f"Select up to {maxsel} Products", df["Product Name"].unique(), max_selections = maxsel)
-    if st.button("Done selecting"):
+    if st.checkbox("Done selecting"):
         dfc = df[df["Product Name"].isin(cname)].copy()
 
         ccc = ["red", "lightblue", "olive", "yellow", "orange"]
