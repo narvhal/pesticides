@@ -129,7 +129,7 @@ elif selection_type == "Product Name":
 #     dfn = filt_df(dfc, selcol, selcolval, type_compare="==")
 # else:
 #     dfn = dfc.copy()
-
+st.write(ccd2)
 lc, rc = st.columns([0.5, 0.5])
 
 if flag_keep_going:
@@ -220,8 +220,8 @@ if flag_keep_going:
 
     st.pyplot(fig, use_container_width = False)
 
-
-    st.write(pd.DataFrame(dfc))
+    dfcg = dfc.drop(subset = "geometry").copy()
+    st.dataframe(dfcg)
 
 
 flag_folium = False
