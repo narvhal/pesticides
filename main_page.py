@@ -188,6 +188,17 @@ if flag_keep_going:
             category_colors_list = [ccd2]  # List of dictionaries mapping categories to colors
             category_legend_flags = [True]  # Whether to include in legend
 
+            for df, column, colors, legend_flag in zip(categorized_dfs, category_columns, category_colors_list, category_legend_flags):
+                for category, color in colors.items():
+                    st.write(column)
+                    st.write(category)
+                    df[df[column] == category].plot(ax=ax, color=color, label=category)
+                    if legend_flag:
+                        category_handle = mpatches.Patch(color=color, label=category)
+                        category_handles.append(category_handle)
+
+
+
             buffer_dfs = [sprivb, spubb]  # List of buffer GeoDataFrames
             buffer_colors = [ 'yellowgreen', 'yellowgreen']  # Buffer colors
             buffer_labels = [f'{size} mile buffer around schools', 'None']  # Buffer labels
