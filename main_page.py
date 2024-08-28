@@ -186,7 +186,7 @@ if flag_keep_going:
         st.pyplot(fig)
         fig, ax = plt.subplots()
         dfjpriv4.plot(ax = ax,color = 'magenta', label = "sch, mdf,   left join",zorder = 10, legend = True)
-        spubb.plot(ax=ax, color = "yellowgreen", alpha = 0.3,,zorder = 1, label = "buf")
+        spubb.plot(ax=ax, color = "yellowgreen", alpha = 0.3,zorder = 1, label = "buf")
         st.pyplot(fig)
 
         st.write(len(dfjpriv2), len(dfjpub2), len(dfjpriv3), len(dfjpriv4))
