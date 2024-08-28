@@ -248,8 +248,8 @@ if flag_keep_going:
             title=f'Fields within {size} miles of school'
         )
         # ax.get_legend().remove()
-        ax.set_ylim([-88030.38276499984, 11734.455264999626])
-        ax.set_xlim([-122326.77554000002, -36477.94346000049])
+        ax.set_ylim([-88030, 11700])
+        ax.set_xlim([-122326, -36477])
         plt.tight_layout()
         st.pyplot(fig)
 
@@ -285,16 +285,16 @@ if flag_keep_going:
             title=f'Fields within {size} miles of school'
         )
         # ax.get_legend().remove()
-        ax.set_ylim([118, 119])
-        ax.set_xlim([-35, -34])
+        ax.set_ylim([118, 120])
+        ax.set_xlim([-35, -30])
         plt.tight_layout()
         st.pyplot(fig)
 
 
-    dfcg = pd.DataFrame(df)
-    # dfgg = pa.Table.from_pandas(dfcg)
-    # st.dataframe(dfgg)
-    st.dataframe(dfcg)
+    # dfcg = pd.DataFrame(df)
+    # # dfgg = pa.Table.from_pandas(dfcg)
+    # # st.dataframe(dfgg)
+    # st.dataframe(dfcg)
     # st.write(dfcg)
 #
 
