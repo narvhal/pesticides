@@ -190,40 +190,39 @@ if flag_keep_going:
     buffer_legend_flags = []  # Whether to include in legend
 
 
-    # lc2, cc2, rc2 = st.columns([0.5, 0.2, 0.3])
+    lc2, cc2, rc2 = st.columns([0.75, 0.2, 0.05])
 
-    # with lc2:
-    fig, ax = plt.subplots(figsize = (6,9))
+    with lc2:
+        fig, ax = plt.subplots()# figsize = (6,9))
 
-    fig  = plot_geopandas_with_legend(fig, ax,flegend = False,
-        polygon_dfs=polygon_dfs,
-        polygon_colors=polygon_colors,
-        polygon_labels=polygon_labels,
-        polygon_alphas=polygon_alphas,
-        polygon_legend_flags=polygon_legend_flags,
-        point_dfs=point_dfs,
-        point_markers=point_markers,
-        point_colors=point_colors,
-        point_sizes=point_sizes,
-        point_labels=point_labels,
-        point_legend_flags=point_legend_flags,
-        categorized_dfs=categorized_dfs,
-        category_columns=category_columns,
-        category_colors_list=category_colors_list,
-        category_legend_flags=category_legend_flags,
-        buffer_dfs=buffer_dfs,
-        buffer_colors=buffer_colors,
-        buffer_labels=buffer_labels,
-        buffer_alphas=buffer_alphas,
-        buffer_legend_flags=buffer_legend_flags,
-        title=f'Fields within {size} miles of school',
-
-    )
-    ax.get_legend().remove()
-    ax.set_ylim([-88030.38276499984, 11734.455264999626])
-    ax.set_xlim([-122326.77554000002, -36477.94346000049])
-    plt.tight_layout()
-    st.pyplot(fig)
+        fig  = plot_geopandas_with_legend(fig, ax,flegend = False,
+            polygon_dfs=polygon_dfs,
+            polygon_colors=polygon_colors,
+            polygon_labels=polygon_labels,
+            polygon_alphas=polygon_alphas,
+            polygon_legend_flags=polygon_legend_flags,
+            point_dfs=point_dfs,
+            point_markers=point_markers,
+            point_colors=point_colors,
+            point_sizes=point_sizes,
+            point_labels=point_labels,
+            point_legend_flags=point_legend_flags,
+            categorized_dfs=categorized_dfs,
+            category_columns=category_columns,
+            category_colors_list=category_colors_list,
+            category_legend_flags=category_legend_flags,
+            buffer_dfs=buffer_dfs,
+            buffer_colors=buffer_colors,
+            buffer_labels=buffer_labels,
+            buffer_alphas=buffer_alphas,
+            buffer_legend_flags=buffer_legend_flags,
+            title=f'Fields within {size} miles of school'
+        )
+        ax.get_legend().remove()
+        ax.set_ylim([-88030.38276499984, 11734.455264999626])
+        ax.set_xlim([-122326.77554000002, -36477.94346000049])
+        plt.tight_layout()
+        st.pyplot(fig)
 
 
 
