@@ -223,7 +223,8 @@ if flag_keep_going:
 
 
     dfcg = pd.DataFrame(dfc)
-    st.dataframe(dfcg)
+    st.write(type(dfcg))
+    # st.dataframe(dfcg)
 
 
 flag_folium = False
