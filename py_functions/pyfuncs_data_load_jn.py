@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 #to_crs(crs =df.crs)
 
 
-@st.cache_data
+
 def list_cols(df, as_vert = True):
     if as_vert:
         dfc = df.columns.to_list()
@@ -24,7 +24,7 @@ def list_cols(df, as_vert = True):
         dfc = sorted(df.columns.to_list())
     return dfc
 
-@st.cache_data
+
 def load_standard_colnames():
     permittee = 'permittee'
     site_id = 'site_id'
@@ -36,25 +36,25 @@ def load_standard_colnames():
     return permittee, site_id, permit_num, permit_yr, loc_narr, is_active, size
 
 
-@st.cache_data
+
 def update_colnames(df, dfnewcolsdict):
     for key in list(dfnewcolsdict.keys()):
         df[dfnewcolsdict[key]] = df[key].copy()
         df.drop(key, axis = 1, inplace = True)
 
-@st.cache_data
+
 def unify_pn(df):
     if isinstance(df['permit_num'].iloc[0], str):
         df['permit_num'] = [int(cpm) for cpm in df['permit_num'] ]
     else:
         df['permit_num'] = [int(cpm) if not np.isnan(cpm) else cpm for cpm in df['permit_num'] ]
 
-@st.cache_data
+
 def unify_py(df):
     df['permit_yr'] = [int(py) for py in df['permit_yr']]
 
 
-@st.cache_data
+
 def print_col_uniques(df):
     for col in df.columns.to_list():
         st.write(col)
@@ -64,9 +64,10 @@ def print_col_uniques(df):
     else: 
         st.write("\t", len(df[col].unique()), " unique values")
 
-@st.cache_data
+
 def prepare_school_pts():
-    flag_gh = True
+    flag_gh = False
+
     if flag_gh:
         fpsch_priv = "https://github.com/narvhal/pesticides/raw/main/data_sources/CA_Dept_Education/California_Private_Schools_Stanislaus.geojson"
         fpsch_pub ="https://github.com/narvhal/pesticides/raw/main/data_sources/CA_Dept_Education/California_Public_Schools_Stanislaus.geojson"
@@ -79,10 +80,10 @@ def prepare_school_pts():
     spub = gpd.read_file(fpsch_pub)
     return spriv, spub
 
-@st.cache_data
+
 def prepare_df_from_stanag():
     #### 2 Hr lesson:: NEED TO RIGHT CLICK ON "Raw" to copy link to download file on GITHUB
-    flag_gh = True
+    flag_gh = False
     if flag_gh:
         fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
         fbs = gpd.read_file(fn)
@@ -150,7 +151,7 @@ def prepare_df_from_stanag():
 
 
 
-@st.cache_data
+
 def filt_df(df, selcol, val, type_compare="=="):
     if type_compare == "==":
         dfn = df[df[selcol] == val].copy()
@@ -162,7 +163,7 @@ def filt_df(df, selcol, val, type_compare="=="):
         print("Compare?? ")
     return dfn
 
-@st.cache_data
+
 def add_geometry2(df, gdf, on = ['site_id', 'permit_num']):
     # usually for PUR and SITES from STAN AG COmm
     # Create a composite key for merging
@@ -193,7 +194,7 @@ def add_geometry2(df, gdf, on = ['site_id', 'permit_num']):
 
     return merged_gdfsm, reject_df
 
-@st.cache_data
+
 def school_buffer(df, size):
     # Assume input size is in "miles"
     # Convert to meters for projected map
@@ -205,11 +206,12 @@ def school_buffer(df, size):
 
 
 
-@st.cache_data
+
 def join_buf_w_df(dfb, dfc, howjoin = "inner", pred = "intersects"):
     # Returns dfc WHERE intersects with dfb, i.e. a subset of dfc
     dfj = gpd.sjoin(dfb, dfc, how = howjoin, predicate = pred)
     return dfj
+
 
 
 # copied stoc
@@ -289,7 +291,7 @@ def normalize(s):
     return normalized
 
 
-@st.cache_data
+
 def make_legend(m):
     # Import necessary functions from branca library
     from branca.element import Template, MacroElement

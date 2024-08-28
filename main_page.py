@@ -58,22 +58,23 @@ spriv, spub = prepare_school_pts()
 
 sz_options = np.arange(10)*2 + 0.5
 size  = st.select_slider('Select distance from Schools', options=sz_options)
-
+spriv = spriv.to_crs(crs =fbs.crs)
+spub = spub.to_crs(crs =fbs.crs)
 sprivb = school_buffer(spriv, size)
 spubb = school_buffer(spub, size)
 # st.write(spriv)
 # st.write(sprivb)
-# dfjpriv = join_buf_w_df(sprivb, mdf, howjoin = "inner", pred = "intersects")
-# dfjpub = join_buf_w_df(spubb, mdf, howjoin = "inner", pred = "intersects")
+dfjpriv = join_buf_w_df(sprivb, mdf, howjoin = "inner", pred = "intersects")
+dfjpub = join_buf_w_df(spubb, mdf, howjoin = "inner", pred = "intersects")
 # st.write(dfjpriv)
-# df = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=dataframesList[0].crs)
+df = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=fbs.crs)
 # st.write("Filter applied!")
 #################
 
 
 st.header("Example Map: Aerial applications")
 # center on Liberty Bell, add marker
-m = folium.Map(location=[37.5, -120.8], zoom_start=5)
+m = folium.Map(location=[37.5, -120.8], zoom_start=7)
 
 #folium.Marker(
 #    [39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell"
@@ -224,22 +225,22 @@ for _, r in dfc.iterrows():
 # )
 
 
-# g = folium.GeoJson(
-#     sprivb,
-#     style_function=lambda x: {
-#         "color": "black",
-#         "fillOpacity": 0.4,
-#     },
-# ).add_to(m)
+g = folium.GeoJson(
+    sprivb,
+    style_function=lambda x: {
+        "color": "black",
+        "fillOpacity": 0.4,
+    },
+).add_to(m)
 
 
-# g2 = folium.GeoJson(
-#     spubb,
-#     style_function=lambda x: {
-#         "color": "green",
-#         "fillOpacity": 0.4,
-#     },
-# ).add_to(m)
+g2 = folium.GeoJson(
+    spubb,
+    style_function=lambda x: {
+        "color": "green",
+        "fillOpacity": 0.4,
+    },
+).add_to(m)
 
 
 make_legend(m)
