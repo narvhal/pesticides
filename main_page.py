@@ -139,7 +139,7 @@ if flag_keep_going:
     # colormap.add_to(m)
     spriv, spub = prepare_school_pts()
 
-    sz_options = np.arange(5)*2 + 0.5
+    sz_options = np.arange(10)/2 + 0.5
 
     key = "Select distance"
     with lc:
@@ -224,6 +224,7 @@ if flag_keep_going:
 
     dfcg = pd.DataFrame(dfc)
     st.write(dfcg)
+    st.table(dfcg)
     # st.dataframe(dfcg)
 
 
