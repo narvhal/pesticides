@@ -89,9 +89,9 @@ if selection_type == "Chemical Type":
 
         dfc = df[df["Product Name"].isin(list(cccddd.keys()))].copy()
         flag_keep_going= True
-    catcol = "color_category"
-    dfc["color_category"] = dfc[colorcol].map(ccd1)
-    dfc["color"] = dfc[colorcol].map(ccd2)
+        catcol = "color_category"
+        dfc["color_category"] = dfc[colorcol].map(ccd1)
+        dfc["color"] = dfc[colorcol].map(ccd2)
     # Determing colors
 elif selection_type == "Product Name":
     maxsel = 5
