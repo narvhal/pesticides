@@ -34,6 +34,7 @@ permittee, site_id, permit_num, permit_yr, loc_narr, is_active, size =load_stand
 
 df, fbs = prepare_df_from_stanag()
 
+st.write(df.columns.to_list())
 # if st.button("Show filter options"):
 #     print_col_uniques(df)
 #################################
@@ -75,7 +76,9 @@ if selection_type == "Chemical Type":
 
     ccd2 = {ccnames[i]:ccc[i] for i in range(len(ccnames))}
 
-    dfc = df[df["Product Name"].isin(list(cccddd.keys()))].copy()
+    if st.button("Done selecting"):
+
+        dfc = df[df["Product Name"].isin(list(cccddd.keys()))].copy()
 
     catcol = "color_category"
     # dfc["color_category"] = dfc[colorcol].map(ccd1)
@@ -100,26 +103,26 @@ elif selection_type == "Product Name":
 
 #####################################1111111
 
-if st.button("Only Aircraft-delivered Products"):
-    selcol = "Appl. Method"
-    selcolval = "Aircraft"
-    # with st.popover("Select filter"):
-    #     for i,d in enumerate(df.columns.to_list()):
-    #         selcol = st.checkbox(str(d), key = "selcol_chkbox_" + str(i))
-    #     if selcol in df.columns.to_list():
-    #         scu = df[selcol].unique()
-    #         if len(scu)<100:
-    #             for j, scv in enumerate(scu):
-    #                 selcolval = st.checkbox(str(scv), key = "selcolval_chkbox_" + str(j))
+# if st.button("Only Aircraft-delivered Products"):
+#     selcol = "Appl. Method"
+#     selcolval = "Aircraft"
+#     # with st.popover("Select filter"):
+#     #     for i,d in enumerate(df.columns.to_list()):
+#     #         selcol = st.checkbox(str(d), key = "selcol_chkbox_" + str(i))
+#     #     if selcol in df.columns.to_list():
+#     #         scu = df[selcol].unique()
+#     #         if len(scu)<100:
+#     #             for j, scv in enumerate(scu):
+#     #                 selcolval = st.checkbox(str(scv), key = "selcolval_chkbox_" + str(j))
 
-    # if selcol in df.columns.to_list():
-    #     if selcolval in df[selcol].unique():
+#     # if selcol in df.columns.to_list():
+#     #     if selcolval in df[selcol].unique():
 
-    dfn = filt_df(dfc, selcol, selcolval, type_compare="==")
-else:
-    dfn = dfc.copy()
+#     dfn = filt_df(dfc, selcol, selcolval, type_compare="==")
+# else:
+#     dfn = dfc.copy()
 
-mdf, rdf = add_geometry2(dfn, fbs)
+mdf, rdf = add_geometry2(dfc, fbs)
 
 
 # colormap.add_to(m)
