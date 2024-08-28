@@ -199,12 +199,12 @@ if flag_keep_going:
         polygon_labels = ['Field Boundaries', 'Products close to schools', f'{size} mile buffer around schools', 'None']  # Corresponding labels
         polygon_alphas = [.5, 0.8, 0.5, 0.5]  # Corresponding labels
         polygon_legend_flags = [False, False, False, False]  # Whether to include in legend
-        polygon_z_order = [2,4,1,1]
+        polygon_z_order = [2,15,1,1]
 
         point_dfs = [spriv, spub]  # List of point GeoDataFrames
         point_markers = ['*', '*']  # Corresponding markers
         point_colors = ['black', 'green']  # Corresponding colors
-        point_sizes = [50, 50]  # Corresponding sizes
+        point_sizes = [30, 30]  # Corresponding sizes
         point_labels = ['Private Schools', 'Public Schools']  # Corresponding labels
         point_legend_flags = [False, False]  # Whether to include in legend
 
