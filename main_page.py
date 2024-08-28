@@ -62,7 +62,7 @@ if selection_type == "Chemical Type":
     with mc:
         def get_new_values_list():
             st.session_state["multisel_products"]
-        cname = st.multiselect("Select Products", ccnames, on_change = get_new_values_list, key = key )
+        cname = st.multiselect("Select Products", ccnames,default = ccnames[0], on_change = get_new_values_list, key = key )
 
     colorcol = "Product Name"
 
@@ -145,7 +145,7 @@ if flag_keep_going:
     key = "Select distance"
     with lc:
         def get_new_values_list3():
-            st.write(st.session_state["Select distance"])
+            st.session_state["Select distance"]
         size  = st.select_slider('Select distance from schools (miles)', options=sz_options, on_change =get_new_values_list3, key=key)
 
     sprivb = school_buffer(spriv, size)
@@ -190,8 +190,10 @@ if flag_keep_going:
                 for category, color in colors.items():
                     st.write(column)
                     st.write(category)
+                    st.write(dfc)
+                    st.write(df)
                     st.write(df[column])
-                    st.write(df[df[column]== category])
+                    # st.write(df[df[column]== category])
                     # df[df[column] == category].plot(ax=ax, color=color, label=category)
                     # if legend_flag:
                         # category_handle = mpatches.Patch(color=color, label=category)
