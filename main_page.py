@@ -193,7 +193,7 @@ if flag_keep_going:
     lc2, cc2, rc2 = st.columns([0.5, 0.2, 0.3])
 
     with lc2:
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(figsize = (6,9))
 
         fig  = plot_geopandas_with_legend(fig, ax,flegend = False,
             polygon_dfs=polygon_dfs,
@@ -221,7 +221,7 @@ if flag_keep_going:
         )
         ax.get_legend().remove()
         # fig.set_size_inches(6, 9)
-
+        plt.tight_layout()
         st.pyplot(fig)
 
 
