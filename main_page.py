@@ -156,7 +156,7 @@ if flag_keep_going:
     # st.write(dfjpriv)
     df = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=fbs.crs)
     dfjpriv2 = join_buf_w_df(mdf,spubb,  howjoin = "inner", pred = "intersects")
-    dfjpub2 = join_buf_w_df(mdf,spubb, howjoin = "inner", pred = "intersects")
+    dfjpub2 = join_buf_w_df(spubb,mdf, howjoin = "inner", pred = "intersects")
     dfjpriv3 = join_buf_w_df(mdf,spubb, howjoin = "left", pred = "intersects")
     dfjpriv4 = join_buf_w_df(spubb,mdf, howjoin = "left", pred = "intersects")
     # st.write(dfjpriv)
