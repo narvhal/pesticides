@@ -140,7 +140,7 @@ if flag_keep_going:
     # colormap.add_to(m)
     spriv, spub = prepare_school_pts()
 
-    sz_options = np.arange(10)*2 + 0.5
+    sz_options = np.arange(5)*2 + 0.5
 
     key = "Select distance"
     with lc:
@@ -190,9 +190,9 @@ if flag_keep_going:
                 for category, color in colors.items():
                     st.write(column)
                     st.write(category)
-                    st.write(df == dfc)
-                    st.write(df)
-                    st.write(df[column])
+                    # st.write(df == dfc)
+                    st.write(type(df))
+                    # st.write(df[column])
                     # st.write(df[df[column]== category])
                     # df[df[column] == category].plot(ax=ax, color=color, label=category)
                     # if legend_flag:
