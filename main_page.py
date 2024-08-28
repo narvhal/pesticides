@@ -13,6 +13,9 @@ import fiona
 import matplotlib.patches as mpatches
 from matplotlib.lines import Line2D
 from matplotlib_scalebar.scalebar import ScaleBar
+from matplotlib.backends.backend_agg import RendererAgg
+_lock = RendererAgg.lock
+
 
 
 st.set_page_config(layout="wide" )
@@ -184,57 +187,43 @@ if flag_keep_going:
     category_colors_list = [ccd2]  # List of dictionaries mapping categories to colors
     category_legend_flags = [True]  # Whether to include in legend
 
-    # for df, column, colors, legend_flag in zip(categorized_dfs, category_columns, category_colors_list, category_legend_flags):
-    #     for category, color in colors.items():
-    #         st.write(column)
-    #         st.write(category)
-    #         st.write(df.columns.to_list())
-    #         # st.write(df == dfc)
-    #         st.write(type(df[column].iloc[0]))
-            # st.write(df[column])
-            # st.write(df[df[column]== category])
-            # df[df[column] == category].plot(ax=ax, color=color, label=category)
-            # if legend_flag:
-                # category_handle = mpatches.Patch(color=color, label=category)
-                # category_handles.append(category_handle)
-
-
-
     buffer_dfs = [sprivb, spubb]  # List of buffer GeoDataFrames
     buffer_colors = [ 'yellowgreen', 'yellowgreen']  # Buffer colors
     buffer_labels = [f'{size} mile buffer around schools', 'None']  # Buffer labels
     buffer_alphas = [ 0.5, 0.5]  # Buffer transparency
     buffer_legend_flags = [True, False]  # Whether to include in legend
-    fig, ax = plt.subplots()
 
-    fig  = plot_geopandas_with_legend(fig, ax,
-        polygon_dfs=polygon_dfs,
-        polygon_colors=polygon_colors,
-        polygon_labels=polygon_labels,
-        polygon_alphas=polygon_alphas,
-        polygon_legend_flags=polygon_legend_flags,
-        point_dfs=point_dfs,
-        point_markers=point_markers,
-        point_colors=point_colors,
-        point_sizes=point_sizes,
-        point_labels=point_labels,
-        point_legend_flags=point_legend_flags,
-        categorized_dfs=categorized_dfs,
-        category_columns=category_columns,
-        category_colors_list=category_colors_list,
-        category_legend_flags=category_legend_flags,
-        buffer_dfs=buffer_dfs,
-        buffer_colors=buffer_colors,
-        buffer_labels=buffer_labels,
-        buffer_alphas=buffer_alphas,
-        buffer_legend_flags=buffer_legend_flags,
-        title=f'Fields within {size} miles of school',
-        figsize=[6, 9]
-    )
+    with _lock:   # https://docs.streamlit.io/develop/api-reference/charts/st.pyplot
+        fig, ax = plt.subplots()
 
-    st.pyplot(fig, use_container_width = False)
+        fig  = plot_geopandas_with_legend(fig, ax,
+            polygon_dfs=polygon_dfs,
+            polygon_colors=polygon_colors,
+            polygon_labels=polygon_labels,
+            polygon_alphas=polygon_alphas,
+            polygon_legend_flags=polygon_legend_flags,
+            point_dfs=point_dfs,
+            point_markers=point_markers,
+            point_colors=point_colors,
+            point_sizes=point_sizes,
+            point_labels=point_labels,
+            point_legend_flags=point_legend_flags,
+            categorized_dfs=categorized_dfs,
+            category_columns=category_columns,
+            category_colors_list=category_colors_list,
+            category_legend_flags=category_legend_flags,
+            buffer_dfs=buffer_dfs,
+            buffer_colors=buffer_colors,
+            buffer_labels=buffer_labels,
+            buffer_alphas=buffer_alphas,
+            buffer_legend_flags=buffer_legend_flags,
+            title=f'Fields within {size} miles of school',
+            figsize=[6, 9]
+        )
 
+        st.pyplot(fig, use_container_width = False)
 
+        st.write(dfc)
 flag_folium = False
 
 if flag_folium:
