@@ -220,6 +220,7 @@ if flag_keep_going:
 
         )
         ax.get_legend().remove()
+        ax.set_ylim([-88030.38276499984, 11734.455264999626])
         # fig.set_size_inches(6, 9)
         plt.tight_layout()
         st.pyplot(fig)
