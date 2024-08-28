@@ -56,7 +56,7 @@ mdf, rdf = add_geometry2(dfn, fbs)
 # colormap.add_to(m)
 spriv, spub = prepare_school_pts()
 
-sz_options = np.arange(10)/2
+sz_options = np.arange(10)/2 + 0.5
 size  = st.select_slider('Select distance from Schools', options=sz_options)
 
 sprivb = school_buffer(spriv, size)
@@ -242,8 +242,18 @@ g2 = folium.GeoJson(
 ).add_to(m)
 
 
+make_legend(m)
+
+
 map = st_folium(
     m,
     width=620, height=580,
     key="folium_map"
 )
+
+col1, col2, col3, col4 = st.columns([0.25, 0.25, 0.25, 0.25])
+cccol= [col1, col2, col3, col4]
+for i in range(4):
+    with cccol[i]:
+        st.write(ccnames[i])
+        st.write(ccl[i])
