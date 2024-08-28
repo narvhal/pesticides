@@ -80,10 +80,10 @@ def prepare_school_pts(crs = "EPSG:3310"):
 
 
 @st.cache_data
-def load_fbs():
+def load_fbs(crs =  "EPSG:3310"):
     fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
     fbs = gpd.read_file(fn)
-    return fbs
+    return fbs.to_crs(crs =crs)
 
 
 def prepare_df_from_stanag(load_aircraft_delivered_data_only = True):

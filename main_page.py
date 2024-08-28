@@ -220,8 +220,7 @@ if flag_keep_going:
 
     st.pyplot(fig, use_container_width = False)
 
-    dfcg = dfc.drop(subset = "geometry").copy()
-    st.dataframe(dfcg)
+    st.dataframe(pd.DataFrame(dfc))
 
 
 flag_folium = False
