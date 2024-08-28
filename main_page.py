@@ -155,10 +155,21 @@ if flag_keep_going:
     dfjpub = join_buf_w_df(spubb, mdf, howjoin = "inner", pred = "intersects")
     # st.write(dfjpriv)
     df = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=fbs.crs)
+    dfjpriv2 = join_buf_w_df(mdf,sprivb,  howjoin = "inner", pred = "intersects")
+    dfjpub2 = join_buf_w_df(mdf,spubb, howjoin = "inner", pred = "intersects")
+    dfjpriv3 = join_buf_w_df(mdf,sprivb, howjoin = "left", pred = "intersects")
+    dfjpriv4 = join_buf_w_df(sprivb,mdf, howjoin = "left", pred = "intersects")
+    # st.write(dfjpriv)
+    df2 = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=fbs.crs)
     # st.write("Filter applied!")
     #################
 
 # Filter df even more (this could be done before joining data)
+dfjpriv2.plot(color = 'blue', label = "mdf, school, inner join")
+dfjpriv.plot(color = 'purple', label = "school,mdf,  inner join")
+dfjpriv3.plot(color = 'red', label = "mdf,sch,   left join")
+dfjpriv4.plot(color = 'magenta', label = "sch, mdf,   left join")
+
 
 # center on Liberty Bell, add marker
 
@@ -175,7 +186,7 @@ if flag_keep_going:
     point_dfs = [spriv, spub]  # List of point GeoDataFrames
     point_markers = ['*', '*']  # Corresponding markers
     point_colors = ['black', 'green']  # Corresponding colors
-    point_sizes = [70, 70]  # Corresponding sizes
+    point_sizes = [50, 50]  # Corresponding sizes
     point_labels = ['Private Schools', 'Public Schools']  # Corresponding labels
     point_legend_flags = [False, False]  # Whether to include in legend
 
