@@ -76,73 +76,89 @@ def prepare_school_pts():
     return spriv, spub
 
 @st.cache_data
-def prepare_df_from_stanag():
+def prepare_df_from_stanag(load_aircraft_delivered_data_only = True):
     #### 2 Hr lesson:: NEED TO RIGHT CLICK ON "Raw" to copy link to download file on GITHUB
     flag_gh = True
-    if flag_gh:
+    if load_aircraft_delivered_data_only:
         fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
         fbs = gpd.read_file(fn)
-        fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/allpurs2023.xlsb"
-        pur = pd.read_excel(fn)
-        fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/AllSites2023.xlsb"
-        sites = pd.read_excel(fn)
+
+        # Load aerial data that's already been processed.
+        fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/Allsites_2023_pur_ApplMethod_Aircraft.xlsx"
+        df  = gpd.read_file(fn)
+
+        fbs.drop_duplicates(inplace = True, ignore_index=True)
+
+        unify_pn(fbs)
+        unify_py(fbs)
+        return df, fbs
 
     else:
-        fp_agcomm = r".\data_sources\AgComm_Stanislaus"
-        fbs = gpd.read_file(fp_agcomm + r"\field_boundaries\Crops_02_12_2024.shp")
-        pur = pd.read_excel(fp_agcomm + r"\allpurs2023.xlsb")
-        sites = pd.read_excel(fp_agcomm + r"\AllSites2023.xlsb")
+        if flag_gh:
+            fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
+            fbs = gpd.read_file(fn)
+
+            fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/allpurs2023.xlsb"
+            pur = pd.read_excel(fn)
+            fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/AllSites2023.xlsb"
+            sites = pd.read_excel(fn)
+
+        else:
+            fp_agcomm = r".\data_sources\AgComm_Stanislaus"
+            fbs = gpd.read_file(fp_agcomm + r"\field_boundaries\Crops_02_12_2024.shp")
+            pur = pd.read_excel(fp_agcomm + r"\allpurs2023.xlsb")
+            sites = pd.read_excel(fp_agcomm + r"\AllSites2023.xlsb")
 
 
-    sites.drop_duplicates(inplace = True, ignore_index = True)
-    pur.drop_duplicates(inplace = True, ignore_index = True)
-    fbs.drop_duplicates(inplace = True, ignore_index=True)
+        sites.drop_duplicates(inplace = True, ignore_index = True)
+        pur.drop_duplicates(inplace = True, ignore_index = True)
+        fbs.drop_duplicates(inplace = True, ignore_index=True)
 
-    permittee, site_id, permit_num, permit_yr, loc_narr, is_active, size =load_standard_colnames()
+        permittee, site_id, permit_num, permit_yr, loc_narr, is_active, size =load_standard_colnames()
 
-    pur_newcolnames = {'Permit #': permit_num,
-     'Permitee': permittee,
-     'Site ID': site_id}
+        pur_newcolnames = {'Permit #': permit_num,
+         'Permitee': permittee,
+         'Site ID': site_id}
 
-    sites_newcolnames = {'Permit Number': 'permit_num',
-     'Permit Year': 'permit_yr',
-     'Site-ID': site_id,
-     'Location Narrative': loc_narr,
-     'Size': size,
-     'M':'Meridian',  # fROM pur
-     'T':'Township',
-     'R': 'Range',
-     'S':  'Section',
-     'Site Active': is_active,
-     'Comm Code': 'Commodity Code'}
+        sites_newcolnames = {'Permit Number': 'permit_num',
+         'Permit Year': 'permit_yr',
+         'Site-ID': site_id,
+         'Location Narrative': loc_narr,
+         'Size': size,
+         'M':'Meridian',  # fROM pur
+         'T':'Township',
+         'R': 'Range',
+         'S':  'Section',
+         'Site Active': is_active,
+         'Comm Code': 'Commodity Code'}
 
-    update_colnames(pur, pur_newcolnames)
-    update_colnames(sites, sites_newcolnames)
+        update_colnames(pur, pur_newcolnames)
+        update_colnames(sites, sites_newcolnames)
 
-    unify_pn(pur)
-    unify_pn(sites)
-    unify_pn(fbs)
+        unify_pn(pur)
+        unify_pn(sites)
+        unify_pn(fbs)
 
-    # unify_py(pur)
-    unify_py(sites)
-    unify_py(fbs)
+        # unify_py(pur)
+        unify_py(sites)
+        unify_py(fbs)
 
-    # Unify datatype of Commodity Code in pur with sites. 
-    pur["Commodity Code0"] = [int(cs.split("-")[0]) for cs in pur["Commodity Code"]]
-    pur["Commodity Code1"] = [int(cs.split("-")[1]) for cs in pur["Commodity Code"]]
-    pur["Commodity Code"] = pur["Commodity Code0"].copy()
+        # Unify datatype of Commodity Code in pur with sites.
+        pur["Commodity Code0"] = [int(cs.split("-")[0]) for cs in pur["Commodity Code"]]
+        pur["Commodity Code1"] = [int(cs.split("-")[1]) for cs in pur["Commodity Code"]]
+        pur["Commodity Code"] = pur["Commodity Code0"].copy()
 
-    purlc = list_cols(pur)
-    sitlc = list_cols(sites)
-    fbslc = list_cols(fbs)
-    # Get common cols if needed
-    psc = [c for c in purlc if c in sitlc]
-    pfc = [c for c in purlc if c in fbslc]
-    sfc = [c for c in sitlc if c in fbslc]
+        purlc = list_cols(pur)
+        sitlc = list_cols(sites)
+        fbslc = list_cols(fbs)
+        # Get common cols if needed
+        psc = [c for c in purlc if c in sitlc]
+        pfc = [c for c in purlc if c in fbslc]
+        sfc = [c for c in sitlc if c in fbslc]
 
-    df = pur.merge(sites,on = psc,how = 'left', suffixes = ("_pur", "_site"))  # Merge automatically uses all common column names...afaik
+        df = pur.merge(sites,on = psc,how = 'left', suffixes = ("_pur", "_site"))  # Merge automatically uses all common column names...afaik
 
-    return df, fbs
+        return df, fbs
 
 
 
