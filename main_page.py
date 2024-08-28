@@ -220,7 +220,10 @@ if flag_keep_going:
 
     st.pyplot(fig, use_container_width = False)
 
-    st.write(dfc)
+
+    st.write(pd.DataFrame(dfc))
+
+
 flag_folium = False
 
 if flag_folium:
