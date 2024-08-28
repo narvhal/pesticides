@@ -48,7 +48,7 @@ selcolval = "Aircraft"
 #     if selcolval in df[selcol].unique():
 
 dfn = filt_df(df, selcol, selcolval, type_compare="==")
-add_geometry2(dfn, fbs)
+mdf, rdf = add_geometry2(dfn, fbs)
 # st.write("Filter applied!")
 #################
 
@@ -70,7 +70,7 @@ m = folium.Map(location=[37.5, -120.8], zoom_start=5)
 # data = ".\pesticides\data_sources\AgComm_Stanislaus\merged_pur_sites_fieldbds.shp"
 # pur = geopandas.GeoDataFrame.from_file(data, crs="EPSG:3310")
 
-du = dfn["Product Name"].unique()
+du = mdf["Product Name"].unique()
 ins = [c for c in du if "insect" in c.lower()]
 herb = [c for c in du if "herbi" in c.lower()]
 fung = [c for c in du if "fungi" in c.lower()]
@@ -93,7 +93,7 @@ colorcol = None
 
 
 colorcol = "Product Name"
-dfc = df.copy()
+dfc = mdf.copy()
 dfc["color_category"] = dfc[colorcol].map(ccd1)
 dfc["color"] = dfc[colorcol].map(ccd2)
 
