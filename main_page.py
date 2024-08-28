@@ -39,7 +39,7 @@ df, fbs = prepare_df_from_stanag()
 #     print_col_uniques(df)
 #################################
 
-def get_new_values_list(key):
+def get_new_values_list():
     st.write(st.session_state[key])
 
 st_list = ["Chemical Type", "Product Name"]
@@ -59,7 +59,9 @@ if selection_type == "Chemical Type":
     cndd = {ccnames[i]:cni[i] for i in range(len(ccnames))}
     key = "multisel_products"
     with mc:
-        cname = st.multiselect("Select Products", ccnames, on_change = get_new_values_list(key), key = key )
+        def get_new_values_list():
+            st.write(st.session_state["multisel_products"])
+        cname = st.multiselect("Select Products", ccnames, on_change = get_new_values_list, key = key )
 
     colorcol = "Product Name"
 
@@ -95,7 +97,10 @@ elif selection_type == "Product Name":
     maxsel = 5
     key = "multisel_products2"
     with mc:
-        cname = st.multiselect(f"Select up to {maxsel} Products", df["Product Name"].unique(), max_selections = maxsel, on_change = get_new_values_list(key), key = key)
+        def get_new_values_list2():
+            st.write(st.session_state["multisel_products2"])
+
+        cname = st.multiselect(f"Select up to {maxsel} Products", df["Product Name"].unique(), max_selections = maxsel, on_change = get_new_values_list2, key = key)
     if st.checkbox("Done selecting", key='done selecting pn'):
         dfc = df[df["Product Name"].isin(cname)].copy()
 
@@ -141,7 +146,10 @@ if flag_keep_going:
     sz_options = np.arange(10)*2 + 0.5
 
     key = "Select distance"
-    size  = st.select_slider('Select distance from Schools', options=sz_options, on_change =get_new_values_list(key), key=key)
+
+    def get_new_values_list3():
+        st.write(st.session_state["Select distance"])
+    size  = st.select_slider('Select distance from Schools', options=sz_options, on_change =get_new_values_list3, key=key)
 
     sprivb = school_buffer(spriv, size)
     spubb = school_buffer(spub, size)
