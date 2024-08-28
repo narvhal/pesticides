@@ -61,12 +61,12 @@ size  = st.select_slider('Select distance from Schools', options=sz_options)
 
 sprivb = school_buffer(spriv, size)
 spubb = school_buffer(spub, size)
-st.write(spriv)
-st.write(sprivb)
-dfjpriv = join_buf_w_df(sprivb, mdf, howjoin = "inner", pred = "intersects")
-dfjpub = join_buf_w_df(spubb, mdf, howjoin = "inner", pred = "intersects")
-st.write(dfjpriv)
-df = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=dataframesList[0].crs)
+# st.write(spriv)
+# st.write(sprivb)
+# dfjpriv = join_buf_w_df(sprivb, mdf, howjoin = "inner", pred = "intersects")
+# dfjpub = join_buf_w_df(spubb, mdf, howjoin = "inner", pred = "intersects")
+# st.write(dfjpriv)
+# df = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=dataframesList[0].crs)
 # st.write("Filter applied!")
 #################
 
@@ -88,7 +88,7 @@ m = folium.Map(location=[37.5, -120.8], zoom_start=5)
 # data = ".\pesticides\data_sources\AgComm_Stanislaus\merged_pur_sites_fieldbds.shp"
 # pur = geopandas.GeoDataFrame.from_file(data, crs="EPSG:3310")
 
-du = df["Product Name"].unique()
+du = mdf["Product Name"].unique()
 ins = [c for c in du if "insect" in c.lower()]
 herb = [c for c in du if "herbi" in c.lower()]
 fung = [c for c in du if "fungi" in c.lower()]
@@ -103,7 +103,7 @@ ccd4 = {c:ccnames[3] for c in other}
 ccd1.update(ccd2)
 ccd1.update(ccd3)
 ccd1.update(ccd4)
-dfc = df.copy()
+dfc = mdf.copy()
 
 ccd2 = {ccnames[i]:ccc[i] for i in range(len(ccnames))}
 # ccd = {ccnames[i]:ccl[i] for i in ccnames}
@@ -224,7 +224,7 @@ for _, r in dfc.iterrows():
 
 
 g = folium.GeoJson(
-    spriv,
+    sprivb,
     style_function=lambda x: {
         "fillColor": "black",
         "color": "black",
@@ -234,7 +234,7 @@ g = folium.GeoJson(
 
 
 g2 = folium.GeoJson(
-    spub,
+    spubb,
     style_function=lambda x: {
         "fillColor": "green",
         "color": "black",
