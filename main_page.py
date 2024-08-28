@@ -189,7 +189,7 @@ if flag_keep_going:
     buffer_alphas = [ 0.5, 0.5]  # Buffer transparency
     buffer_legend_flags = [True, False]  # Whether to include in legend
 
-    fig, ax = plt.subplots(figsize = (6, 9))
+    fig, ax = plt.subplots()
 
     fig  = plot_geopandas_with_legend(fig, ax,
         polygon_dfs=polygon_dfs,
@@ -212,10 +212,13 @@ if flag_keep_going:
         buffer_labels=buffer_labels,
         buffer_alphas=buffer_alphas,
         buffer_legend_flags=buffer_legend_flags,
-        title=f'Fields within {size} miles of school'
+        title=f'Fields within {size} miles of school',
+
     )
 
-    st.pyplot(fig)
+    fig.set_size_inches(6, 9)
+
+    st.pyplot(fig, use_container_width = False)
 
     st.write(dfc)
 flag_folium = False

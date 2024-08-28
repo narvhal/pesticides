@@ -278,7 +278,7 @@ def plot_geopandas_with_legend(fig, ax,
 
     # Add the legend to the plot if any handles are present
     if handles:
-        plt.legend(handles=handles, title=title)
+        plt.legend(handles=handles, title=title, fontsize=10, title_fontsize=15, bbox_to_anchor = (0.01, 0.8), loc = 2)
 
     # Hide the axes
     ax.axes.get_xaxis().set_visible(False)
