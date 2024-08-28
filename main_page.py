@@ -91,9 +91,12 @@ colorcol = "Product Name"
 
 du = mdf["Product Name"].unique()
 ins = [c for c in du if "insect" in c.lower()]
+du = list(set(du)-set(ins))
 herb = [c for c in du if "herbi" in c.lower()]
+du = list(set(du)-set(herb))
+
 fung = [c for c in du if "fungi" in c.lower()]
-other = [c for c in du if ~(c in fung + ins + herb)]
+other = list(set(du)-set(fung))
 ccnames = ["Insecticides", "Herbicides", "Fungicides", "Other"]
 ccc = ["red", "lightblue", "green", "yellow"]
 ccl = [ins, herb, fung, other]
@@ -220,26 +223,26 @@ for _, r in dfc.iterrows():
 # )
 
 
-g = folium.GeoJson(
-    sprivb,
-    style_function=lambda x: {
-        "color": "black",
-        "fillOpacity": 0.4,
-    },
-).add_to(m)
+# g = folium.GeoJson(
+#     sprivb,
+#     style_function=lambda x: {
+#         "color": "black",
+#         "fillOpacity": 0.4,
+#     },
+# ).add_to(m)
 
 
-g2 = folium.GeoJson(
-    spubb,
-    style_function=lambda x: {
-        "color": "green",
-        "fillOpacity": 0.4,
-    },
-).add_to(m)
+# g2 = folium.GeoJson(
+#     spubb,
+#     style_function=lambda x: {
+#         "color": "green",
+#         "fillOpacity": 0.4,
+#     },
+# ).add_to(m)
 
 
 make_legend(m)
-folium.LayerControl().add_to(m)
+# folium.LayerControl().add_to(m)  ADDS TOO MANY ALL SHAPES
 
 map = st_folium(
     m,
