@@ -22,6 +22,14 @@ def list_cols(df, as_vert = True):
     else:
         dfc = sorted(df.columns.to_list())
     return dfc
+def load_standard_colnames():
+    permittee = 'permittee'
+    site_id = 'site_id'
+    permit_num =  'permit_num'
+    permit_yr = 'permit_yr'
+    loc_narr =  'loc_narr'
+    is_active = 'is_active'
+    size =  'size'
 
 def update_colnames(df, dfnewcolsdict):
     for key in list(dfnewcolsdict.keys()):
@@ -82,6 +90,8 @@ def prepare_df_from_stanag():
     sites.drop_duplicates(inplace = True, ignore_index = True)
     pur.drop_duplicates(inplace = True, ignore_index = True)
     fbs.drop_duplicates(inplace = True, ignore_index=True)
+
+    load_standard_colnames()
 
     pur_newcolnames = {'Permit #': permit_num,
      'Permitee': permittee,
