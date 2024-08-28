@@ -155,64 +155,67 @@ if flag_keep_going:
     dfjpub = join_buf_w_df(spubb, mdf, howjoin = "inner", pred = "intersects")
     # st.write(dfjpriv)
     df = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=fbs.crs)
-    dfjpriv2 = join_buf_w_df(mdf,sprivb,  howjoin = "inner", pred = "intersects")
+    dfjpriv2 = join_buf_w_df(mdf,spubb,  howjoin = "inner", pred = "intersects")
     dfjpub2 = join_buf_w_df(mdf,spubb, howjoin = "inner", pred = "intersects")
-    dfjpriv3 = join_buf_w_df(mdf,sprivb, howjoin = "left", pred = "intersects")
-    dfjpriv4 = join_buf_w_df(sprivb,mdf, howjoin = "left", pred = "intersects")
+    dfjpriv3 = join_buf_w_df(mdf,spubb, howjoin = "left", pred = "intersects")
+    dfjpriv4 = join_buf_w_df(spubb,mdf, howjoin = "left", pred = "intersects")
     # st.write(dfjpriv)
     df2 = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=fbs.crs)
     # st.write("Filter applied!")
     #################
 
-    # Filter df even more (this could be done before joining data)
-    fig, ax = plt.subplots()
-    dfjpriv2.plot(color = 'blue', label = "mdf, school, inner join")
-    st.pyplot(fig)
-    fig, ax = plt.subplots()
-    dfjpriv.plot(color = 'purple', label = "school,mdf,  inner join")
-    st.pyplot(fig)
-    fig, ax = plt.subplots()
-    dfjpriv3.plot(color = 'red', label = "mdf,sch,   left join")
-    st.pyplot(fig)
-    fig, ax = plt.subplots()
-    dfjpriv4.plot(color = 'magenta', label = "sch, mdf,   left join")
-    st.pyplot(fig)
-
-
-# center on Liberty Bell, add marker
 
     st.header("Example Map: Aerial applications")
-    # Example usage:
-    # Rectangle in legend:
-    polygon_dfs = [fbs, df, sprivb, spubb]  # List of polygon GeoDataFrames
-    polygon_colors = ['grey', 'red', 'yellowgreen', 'yellowgreen']  # Corresponding colors
-    polygon_labels = ['Field Boundaries', 'Products close to schools', f'{size} mile buffer around schools', 'None']  # Corresponding labels
-    polygon_alphas = [.5, 0.8, 0.5, 0.5]  # Corresponding labels
-    polygon_legend_flags = [False, False, False, False]  # Whether to include in legend
-    polygon_z_order = [2,4,1,1]
-
-    point_dfs = [spriv, spub]  # List of point GeoDataFrames
-    point_markers = ['*', '*']  # Corresponding markers
-    point_colors = ['black', 'green']  # Corresponding colors
-    point_sizes = [50, 50]  # Corresponding sizes
-    point_labels = ['Private Schools', 'Public Schools']  # Corresponding labels
-    point_legend_flags = [False, False]  # Whether to include in legend
-
-    categorized_dfs = []  # List of categorized GeoDataFrames
-    category_columns = []  # List of column names for categories
-    category_colors_list = []  # List of dictionaries mapping categories to colors
-    category_legend_flags = []  # Whether to include in legend
-
-    buffer_dfs = []  # List of buffer GeoDataFrames
-    buffer_colors = []  # Buffer colors
-    buffer_labels = []  # Buffer labels
-    buffer_alphas = []  # Buffer transparency
-    buffer_legend_flags = []  # Whether to include in legend
-
 
     lc2, cc2, rc2 = st.columns([0.75, 0.2, 0.05])
-
     with lc2:
+
+        # Filter df even more (this could be done before joining data)
+        fig, ax = plt.subplots()
+        dfjpriv2.plot(color = 'blue', label = "mdf, school, inner join")
+        st.pyplot(fig)
+        fig, ax = plt.subplots()
+        spubb.plot(color = 'purple', label = "school,mdf,  inner join")
+        st.pyplot(fig)
+        fig, ax = plt.subplots()
+        dfjpriv3.plot(color = 'red', label = "mdf,sch,   left join")
+        st.pyplot(fig)
+        fig, ax = plt.subplots()
+        dfjpriv4.plot(color = 'magenta', label = "sch, mdf,   left join")
+        st.pyplot(fig)
+
+
+    # center on Liberty Bell, add marker
+
+        # Example usage:
+        # Rectangle in legend:
+        polygon_dfs = [fbs, df, sprivb, spubb]  # List of polygon GeoDataFrames
+        polygon_colors = ['grey', 'red', 'yellowgreen', 'yellowgreen']  # Corresponding colors
+        polygon_labels = ['Field Boundaries', 'Products close to schools', f'{size} mile buffer around schools', 'None']  # Corresponding labels
+        polygon_alphas = [.5, 0.8, 0.5, 0.5]  # Corresponding labels
+        polygon_legend_flags = [False, False, False, False]  # Whether to include in legend
+        polygon_z_order = [2,4,1,1]
+
+        point_dfs = [spriv, spub]  # List of point GeoDataFrames
+        point_markers = ['*', '*']  # Corresponding markers
+        point_colors = ['black', 'green']  # Corresponding colors
+        point_sizes = [50, 50]  # Corresponding sizes
+        point_labels = ['Private Schools', 'Public Schools']  # Corresponding labels
+        point_legend_flags = [False, False]  # Whether to include in legend
+
+        categorized_dfs = []  # List of categorized GeoDataFrames
+        category_columns = []  # List of column names for categories
+        category_colors_list = []  # List of dictionaries mapping categories to colors
+        category_legend_flags = []  # Whether to include in legend
+
+        buffer_dfs = []  # List of buffer GeoDataFrames
+        buffer_colors = []  # Buffer colors
+        buffer_labels = []  # Buffer labels
+        buffer_alphas = []  # Buffer transparency
+        buffer_legend_flags = []  # Whether to include in legend
+
+
+
         fig, ax = plt.subplots()# figsize = (6,9))
 
         fig  = plot_geopandas_with_legend(fig, ax,flegend = False,
