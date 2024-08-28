@@ -147,7 +147,7 @@ colormap = branca.colormap.StepColormap(
     caption=colorcol_desc,
 )
 
-m = folium.Map(location=[35.3, -97.6], zoom_start=4)
+m = folium.Map(location=[35.3, -97.6], zoom_start=7)
 
 popup = folium.GeoJsonPopup(
     fields=["Site Location", colorcol],
