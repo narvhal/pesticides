@@ -232,7 +232,7 @@ if flag_keep_going:
         figsize=[6, 9]
     )
 
-    st.pyplot(fig=fig, use_container_width = False)
+    st.pyplot(fig, use_container_width = False)
 
 
 flag_folium = False
