@@ -230,7 +230,7 @@ def join_buf_w_df(dfb, dfc, howjoin = "inner", pred = "intersects"):
 
 
 def plot_geopandas_with_legend(fig, ax, flegend = True,
-    polygon_dfs=[], polygon_colors=[], polygon_labels=[],polygon_alphas= [], polygon_legend_flags=[],
+    polygon_dfs=[], polygon_colors=[], polygon_labels=[],polygon_alphas= [], polygon_legend_flags=[],polygon_z_order = [],
     point_dfs=[], point_markers=[], point_colors=[], point_sizes=[], point_labels=[], point_legend_flags=[],
     categorized_dfs=[], category_columns=[], category_colors_list=[], category_legend_flags=[],
     buffer_dfs=[], buffer_colors=[], buffer_labels=[], buffer_alphas=[], buffer_legend_flags=[],
@@ -248,8 +248,8 @@ def plot_geopandas_with_legend(fig, ax, flegend = True,
 
     # Plot polygon GeoDataFrames with their respective colors and labels
     polygon_handles = []
-    for df, color, label,alpha, legend_flag in zip(polygon_dfs, polygon_colors, polygon_labels, polygon_alphas, polygon_legend_flags):
-        df.plot(ax=ax, color=color, alpha=alpha, label=label)
+    for df, color, label,alpha, legend_flag, zorder in zip(polygon_dfs, polygon_colors, polygon_labels, polygon_alphas, polygon_legend_flags, polygon_z_order):
+        df.plot(ax=ax, color=color, alpha=alpha, label=label, zorder= zorder)
         if legend_flag:
             polygon_handle = mpatches.Patch(color=color,alpha = alpha, label=label)
             polygon_handles.append(polygon_handle)

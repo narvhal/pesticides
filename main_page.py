@@ -168,8 +168,9 @@ if flag_keep_going:
     polygon_dfs = [fbs, mdf, sprivb, spubb]  # List of polygon GeoDataFrames
     polygon_colors = ['grey', 'red', 'yellowgreen', 'yellowgreen']  # Corresponding colors
     polygon_labels = ['Field Boundaries', 'Products close to schools', f'{size} mile buffer around schools', 'None']  # Corresponding labels
-    polygon_alphas = [1, 0.8, 0.5, 0.5]  # Corresponding labels
+    polygon_alphas = [.5, 0.8, 0.5, 0.5]  # Corresponding labels
     polygon_legend_flags = [False, False, False, False]  # Whether to include in legend
+    polygon_z_order = [2,4,1,1]
 
     point_dfs = [spriv, spub]  # List of point GeoDataFrames
     point_markers = ['*', '*']  # Corresponding markers
@@ -201,6 +202,7 @@ if flag_keep_going:
             polygon_labels=polygon_labels,
             polygon_alphas=polygon_alphas,
             polygon_legend_flags=polygon_legend_flags,
+            polygon_z_order = polygon_z_order,
             point_dfs=point_dfs,
             point_markers=point_markers,
             point_colors=point_colors,
