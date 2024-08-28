@@ -7,4 +7,5 @@ branca
 matplotlib
 fiona
 pyxlsb
+openpyxl
 matplotlib-scalebar
