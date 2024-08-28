@@ -23,15 +23,15 @@ df, fbs = prepare_df_from_stanag()
 #     print_col_uniques(df)
 
 selcol = st.empty()
-selcolval = None
+selcolval = st.empty()
 with st.popover("Select filter"):
-    for d in df.columns.to_list():
-        selcol = st.checkbox(str(d))
+    for i,d in enumerate(df.columns.to_list()):
+        selcol = st.checkbox(str(d), key = "selcol_chkbox_" + str(i))
     if selcol in df.columns.to_list():
         scu = df[selcol].unique()
         if len(scu)<100:
-            for scv in scu:
-                selcolval = st.checkbox(str(scv))
+            for j, scv in enumerate(scu):
+                selcolval = st.checkbox(str(scv), key = "selcolval_chkbox_" + str(j))
 
 if selcol in df.columns.to_list():
     if selcolval in df[selcol].unique():
