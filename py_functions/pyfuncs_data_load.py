@@ -270,7 +270,7 @@ def plot_geopandas_with_legend(fig, ax, flegend = True,
         df.plot(ax=ax, marker=marker, markersize=size, color=color, edgecolor='k', label=label)
         if legend_flag:
             point_handle = Line2D([0], [0], marker=marker, color='k', markerfacecolor=color,
-                                  linestyle='None', markersize=10, label=label)
+                                  linestyle='None', linewidth= 0.5, markersize=10, label=label)
             point_handles.append(point_handle)
 
     # Combine all handles
