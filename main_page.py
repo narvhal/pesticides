@@ -13,10 +13,6 @@ import fiona
 import matplotlib.patches as mpatches
 from matplotlib.lines import Line2D
 from matplotlib_scalebar.scalebar import ScaleBar
-from matplotlib.backends.backend_agg import RendererAgg
-_lock = RendererAgg.lock
-
-
 
 st.set_page_config(layout="wide" )
 
@@ -193,37 +189,35 @@ if flag_keep_going:
     buffer_alphas = [ 0.5, 0.5]  # Buffer transparency
     buffer_legend_flags = [True, False]  # Whether to include in legend
 
-    with _lock:   # https://docs.streamlit.io/develop/api-reference/charts/st.pyplot
-        fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize = (6, 9))
 
-        fig  = plot_geopandas_with_legend(fig, ax,
-            polygon_dfs=polygon_dfs,
-            polygon_colors=polygon_colors,
-            polygon_labels=polygon_labels,
-            polygon_alphas=polygon_alphas,
-            polygon_legend_flags=polygon_legend_flags,
-            point_dfs=point_dfs,
-            point_markers=point_markers,
-            point_colors=point_colors,
-            point_sizes=point_sizes,
-            point_labels=point_labels,
-            point_legend_flags=point_legend_flags,
-            categorized_dfs=categorized_dfs,
-            category_columns=category_columns,
-            category_colors_list=category_colors_list,
-            category_legend_flags=category_legend_flags,
-            buffer_dfs=buffer_dfs,
-            buffer_colors=buffer_colors,
-            buffer_labels=buffer_labels,
-            buffer_alphas=buffer_alphas,
-            buffer_legend_flags=buffer_legend_flags,
-            title=f'Fields within {size} miles of school',
-            figsize=[6, 9]
-        )
+    fig  = plot_geopandas_with_legend(fig, ax,
+        polygon_dfs=polygon_dfs,
+        polygon_colors=polygon_colors,
+        polygon_labels=polygon_labels,
+        polygon_alphas=polygon_alphas,
+        polygon_legend_flags=polygon_legend_flags,
+        point_dfs=point_dfs,
+        point_markers=point_markers,
+        point_colors=point_colors,
+        point_sizes=point_sizes,
+        point_labels=point_labels,
+        point_legend_flags=point_legend_flags,
+        categorized_dfs=categorized_dfs,
+        category_columns=category_columns,
+        category_colors_list=category_colors_list,
+        category_legend_flags=category_legend_flags,
+        buffer_dfs=buffer_dfs,
+        buffer_colors=buffer_colors,
+        buffer_labels=buffer_labels,
+        buffer_alphas=buffer_alphas,
+        buffer_legend_flags=buffer_legend_flags,
+        title=f'Fields within {size} miles of school'
+    )
 
-        st.pyplot(fig, use_container_width = False)
+    st.pyplot(fig)
 
-        st.write(dfc)
+    st.write(dfc)
 flag_folium = False
 
 if flag_folium:
