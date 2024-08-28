@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.lines import Line2D
 from matplotlib_scalebar.scalebar import ScaleBar
-from geodatasets import get_path
 ###########################
 
 # Data filtering widgets

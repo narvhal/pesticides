@@ -13,7 +13,6 @@ import fiona
 import matplotlib.patches as mpatches
 from matplotlib.lines import Line2D
 from matplotlib_scalebar.scalebar import ScaleBar
-from geodatasets import get_path
 
 
 st.set_page_config(layout="wide" )
