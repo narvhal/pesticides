@@ -183,11 +183,11 @@ if flag_keep_going:
     category_colors_list = [ccd2]  # List of dictionaries mapping categories to colors
     category_legend_flags = [False]  # Whether to include in legend
 
-    buffer_dfs = [sprivb, spubb]  # List of buffer GeoDataFrames
-    buffer_colors = [ 'yellowgreen', 'yellowgreen']  # Buffer colors
-    buffer_labels = [f'{size} mile buffer around schools', 'None']  # Buffer labels
-    buffer_alphas = [ 0.5, 0.5]  # Buffer transparency
-    buffer_legend_flags = [False, False]  # Whether to include in legend
+    buffer_dfs = [dfc, sprivb, spubb]  # List of buffer GeoDataFrames
+    buffer_colors = ['red', 'yellowgreen', 'yellowgreen']  # Buffer colors
+    buffer_labels = ['Products close to schools', f'{size} mile buffer around schools', 'None']  # Buffer labels
+    buffer_alphas = [0.8, 0.5, 0.5]  # Buffer transparency
+    buffer_legend_flags = [False, False, False]  # Whether to include in legend
 
 
     lc2, cc2, rc2 = st.columns([0.5, 0.2, 0.3])
