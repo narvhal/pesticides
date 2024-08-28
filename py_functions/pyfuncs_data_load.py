@@ -85,7 +85,7 @@ def prepare_df_from_stanag(load_aircraft_delivered_data_only = True):
 
         # Load aerial data that's already been processed.
         fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/Allsites_2023_pur_ApplMethod_Air.xlsx"
-        df  = gpd.read_excel(fn)
+        df  = pd.read_excel(fn)
 
         fbs.drop_duplicates(inplace = True, ignore_index=True)
 
