@@ -229,11 +229,6 @@ def join_buf_w_df(dfb, dfc, howjoin = "inner", pred = "intersects"):
 
 
 
-import geopandas as gpd
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib.lines import Line2D
-
 def plot_geopandas_with_legend(
     polygon_dfs=[], polygon_colors=[], polygon_labels=[],polygon_alphas= [], polygon_legend_flags=[],
     point_dfs=[], point_markers=[], point_colors=[], point_sizes=[], point_labels=[], point_legend_flags=[],

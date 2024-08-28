@@ -136,6 +136,8 @@ elif selection_type == "Product Name":
 # else:
 #     dfn = dfc.copy()
 
+lc, rc = st.columns([0.5, 0.5])
+
 if flag_keep_going:
 
     mdf, rdf = add_geometry2(dfc, fbs)
@@ -146,10 +148,10 @@ if flag_keep_going:
     sz_options = np.arange(10)*2 + 0.5
 
     key = "Select distance"
-
-    def get_new_values_list3():
-        st.write(st.session_state["Select distance"])
-    size  = st.select_slider('Select distance from Schools (miles)', options=sz_options, on_change =get_new_values_list3, key=key)
+    with rc:
+        def get_new_values_list3():
+            st.write(st.session_state["Select distance"])
+        size  = st.select_slider('Select distance from Schools (miles)', options=sz_options, on_change =get_new_values_list3, key=key)
 
     sprivb = school_buffer(spriv, size)
     spubb = school_buffer(spub, size)
@@ -168,7 +170,7 @@ if flag_keep_going:
 
 # st.write(dfc[[colorcol, "color_category", "color"]])
 
-
+    with lc:
     if st.checkbox("Plot map", key = "plotmapcheckbx"):
         st.header("Example Map: Aerial applications")
 
