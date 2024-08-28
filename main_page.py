@@ -165,7 +165,7 @@ if flag_keep_going:
     st.header("Example Map: Aerial applications")
     # Example usage:
     # Rectangle in legend:
-    polygon_dfs = [fbs, dfc, sprivb, spubb]  # List of polygon GeoDataFrames
+    polygon_dfs = [fbs, mdf, sprivb, spubb]  # List of polygon GeoDataFrames
     polygon_colors = ['grey', 'red', 'yellowgreen', 'yellowgreen']  # Corresponding colors
     polygon_labels = ['Field Boundaries', 'Products close to schools', f'{size} mile buffer around schools', 'None']  # Corresponding labels
     polygon_alphas = [1, 0.8, 0.5, 0.5]  # Corresponding labels
@@ -178,7 +178,7 @@ if flag_keep_going:
     point_labels = ['Private Schools', 'Public Schools']  # Corresponding labels
     point_legend_flags = [False, False]  # Whether to include in legend
 
-    categorized_dfs = [dfc]  # List of categorized GeoDataFrames
+    categorized_dfs = [mdf]  # List of categorized GeoDataFrames
     category_columns = [catcol]  # List of column names for categories
     category_colors_list = [ccd2]  # List of dictionaries mapping categories to colors
     category_legend_flags = [False]  # Whether to include in legend
@@ -227,10 +227,10 @@ if flag_keep_going:
 
 
 
-    # dfcg = pd.DataFrame(dfc)
+    dfcg = pd.DataFrame(mdf)
     # dfgg = pa.Table.from_pandas(dfcg)
     # st.dataframe(dfgg)
-    # st.dataframe(dfcg)
+    st.dataframe(dfcg)
     # st.write(dfcg)
 #
 
