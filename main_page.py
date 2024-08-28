@@ -39,20 +39,26 @@ df, fbs = prepare_df_from_stanag()
 #     print_col_uniques(df)
 #################################
 
+def get_new_values_list(key):
+    st.write(st.session_state[key])
 
 st_list = ["Chemical Type", "Product Name"]
+lc, rc = st.columns([0.5, 0.5])
 
 # Data vis options:
-selection_type = st.radio("Select Products", st_list, key='sel pn or ct')
+with lc:
+    selection_type = st.radio("Select Products", st_list, key='sel pn or ct')
 
 flag_keep_going= False
+
 if selection_type == "Chemical Type":
 
     ccnames = ["Insecticides", "Herbicides", "Fungicides", "Other"]
     ccc = ["red", "lightblue", "olive", "yellow"]
     cni = range(4)
     cndd = {ccnames[i]:cni[i] for i in range(len(ccnames))}
-    cname = st.multiselect("Select Products", ccnames)
+    key = "multisel_products"
+    cname = st.multiselect("Select Products", ccnames, on_change = get_new_values_list(key), key = key )
 
     colorcol = "Product Name"
 
@@ -86,7 +92,9 @@ if selection_type == "Chemical Type":
     # Determing colors
 elif selection_type == "Product Name":
     maxsel = 5
-    cname = st.multiselect(f"Select up to {maxsel} Products", df["Product Name"].unique(), max_selections = maxsel)
+    key = "multisel_products2"
+
+    cname = st.multiselect(f"Select up to {maxsel} Products", df["Product Name"].unique(), max_selections = maxsel, on_change = get_new_values_list(key), key = key)
     if st.checkbox("Done selecting", key='done selecting pn'):
         dfc = df[df["Product Name"].isin(cname)].copy()
 
@@ -131,9 +139,8 @@ if flag_keep_going:
 
     sz_options = np.arange(10)*2 + 0.5
 
-    def get_new_values_list():
-        st.write(st.session_state['Select distance from Schools'])
-    size  = st.select_slider('Select distance from Schools', options=sz_options, on_change =get_new_values_list, key='Select distance')
+    key = "Select distance"
+    size  = st.select_slider('Select distance from Schools', options=sz_options, on_change =get_new_values_list(key), key=key)
 
     sprivb = school_buffer(spriv, size)
     spubb = school_buffer(spub, size)
