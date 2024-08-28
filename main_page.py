@@ -165,7 +165,7 @@ if flag_keep_going:
     st.header("Example Map: Aerial applications")
     # Example usage:
     # Rectangle in legend:
-    polygon_dfs = [fbs, mdf, sprivb, spubb]  # List of polygon GeoDataFrames
+    polygon_dfs = [fbs, df, sprivb, spubb]  # List of polygon GeoDataFrames
     polygon_colors = ['grey', 'red', 'yellowgreen', 'yellowgreen']  # Corresponding colors
     polygon_labels = ['Field Boundaries', 'Products close to schools', f'{size} mile buffer around schools', 'None']  # Corresponding labels
     polygon_alphas = [.5, 0.8, 0.5, 0.5]  # Corresponding labels
