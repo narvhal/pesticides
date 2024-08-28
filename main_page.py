@@ -218,7 +218,7 @@ if flag_keep_going:
             buffer_legend_flags=buffer_legend_flags,
             title=f'Fields within {size} miles of school'
         )
-        ax.get_legend().remove()
+        # ax.get_legend().remove()
         ax.set_ylim([-88030.38276499984, 11734.455264999626])
         ax.set_xlim([-122326.77554000002, -36477.94346000049])
         plt.tight_layout()
