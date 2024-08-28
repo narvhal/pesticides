@@ -93,7 +93,7 @@ du = mdf["Product Name"].unique()
 ins = [c for c in du if "insect" in c.lower()]
 herb = [c for c in du if "herbi" in c.lower()]
 fung = [c for c in du if "fungi" in c.lower()]
-other = [c for c in du if c not in ins + herb]
+other = [c for c in du if ~(c in fung + ins + herb)]
 ccnames = ["Insecticides", "Herbicides", "Fungicides", "Other"]
 ccc = ["red", "lightblue", "green", "yellow"]
 ccl = [ins, herb, fung, other]
@@ -223,7 +223,6 @@ for _, r in dfc.iterrows():
 g = folium.GeoJson(
     sprivb,
     style_function=lambda x: {
-        "fillColor": "black",
         "color": "black",
         "fillOpacity": 0.4,
     },
@@ -233,15 +232,14 @@ g = folium.GeoJson(
 g2 = folium.GeoJson(
     spubb,
     style_function=lambda x: {
-        "fillColor": "green",
-        "color": "black",
+        "color": "green",
         "fillOpacity": 0.4,
     },
 ).add_to(m)
 
 
 make_legend(m)
-
+folium.LayerControl().add_to(m)
 
 map = st_folium(
     m,
