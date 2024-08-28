@@ -171,218 +171,218 @@ if flag_keep_going:
 # st.write(dfc[[colorcol, "color_category", "color"]])
 
     with lc:
-    if st.checkbox("Plot map", key = "plotmapcheckbx"):
-        st.header("Example Map: Aerial applications")
+        if st.checkbox("Plot map", key = "plotmapcheckbx"):
+            st.header("Example Map: Aerial applications")
 
-        # Example usage:
-        # Rectangle in legend:
-        polygon_dfs = [fbs]  # List of polygon GeoDataFrames
-        polygon_colors = ['grey']  # Corresponding colors
-        polygon_labels = ['Field Boundaries']  # Corresponding labels
-        polygon_alphas = [1]  # Corresponding labels
-        polygon_legend_flags = [True]  # Whether to include in legend
+            # Example usage:
+            # Rectangle in legend:
+            polygon_dfs = [fbs]  # List of polygon GeoDataFrames
+            polygon_colors = ['grey']  # Corresponding colors
+            polygon_labels = ['Field Boundaries']  # Corresponding labels
+            polygon_alphas = [1]  # Corresponding labels
+            polygon_legend_flags = [True]  # Whether to include in legend
 
-        point_dfs = [spriv, spub]  # List of point GeoDataFrames
-        point_markers = ['*', '*']  # Corresponding markers
-        point_colors = ['black', 'green']  # Corresponding colors
-        point_sizes = [70, 70]  # Corresponding sizes
-        point_labels = ['Private Schools', 'Public Schools']  # Corresponding labels
-        point_legend_flags = [True, True]  # Whether to include in legend
+            point_dfs = [spriv, spub]  # List of point GeoDataFrames
+            point_markers = ['*', '*']  # Corresponding markers
+            point_colors = ['black', 'green']  # Corresponding colors
+            point_sizes = [70, 70]  # Corresponding sizes
+            point_labels = ['Private Schools', 'Public Schools']  # Corresponding labels
+            point_legend_flags = [True, True]  # Whether to include in legend
 
-        categorized_dfs = [dfc]  # List of categorized GeoDataFrames
-        category_columns = [catcol]  # List of column names for categories
-        category_colors_list = [ccd2]  # List of dictionaries mapping categories to colors
-        category_legend_flags = [True]  # Whether to include in legend
+            categorized_dfs = [dfc]  # List of categorized GeoDataFrames
+            category_columns = [catcol]  # List of column names for categories
+            category_colors_list = [ccd2]  # List of dictionaries mapping categories to colors
+            category_legend_flags = [True]  # Whether to include in legend
 
-        buffer_dfs = [sprivb, spubb]  # List of buffer GeoDataFrames
-        buffer_colors = [ 'yellowgreen', 'yellowgreen']  # Buffer colors
-        buffer_labels = [f'{size} mile buffer around schools', 'None']  # Buffer labels
-        buffer_alphas = [ 0.5, 0.5]  # Buffer transparency
-        buffer_legend_flags = [True, False]  # Whether to include in legend
+            buffer_dfs = [sprivb, spubb]  # List of buffer GeoDataFrames
+            buffer_colors = [ 'yellowgreen', 'yellowgreen']  # Buffer colors
+            buffer_labels = [f'{size} mile buffer around schools', 'None']  # Buffer labels
+            buffer_alphas = [ 0.5, 0.5]  # Buffer transparency
+            buffer_legend_flags = [True, False]  # Whether to include in legend
 
-        fig  = plot_geopandas_with_legend(
-            polygon_dfs=polygon_dfs,
-            polygon_colors=polygon_colors,
-            polygon_labels=polygon_labels,
-            polygon_alphas=polygon_alphas,
-            polygon_legend_flags=polygon_legend_flags,
-            point_dfs=point_dfs,
-            point_markers=point_markers,
-            point_colors=point_colors,
-            point_sizes=point_sizes,
-            point_labels=point_labels,
-            point_legend_flags=point_legend_flags,
-            categorized_dfs=categorized_dfs,
-            category_columns=category_columns,
-            category_colors_list=category_colors_list,
-            category_legend_flags=category_legend_flags,
-            buffer_dfs=buffer_dfs,
-            buffer_colors=buffer_colors,
-            buffer_labels=buffer_labels,
-            buffer_alphas=buffer_alphas,
-            buffer_legend_flags=buffer_legend_flags,
-            title=f'Fields within {size} miles of school',
-            figsize=(10, 16)
-        )
+            fig  = plot_geopandas_with_legend(
+                polygon_dfs=polygon_dfs,
+                polygon_colors=polygon_colors,
+                polygon_labels=polygon_labels,
+                polygon_alphas=polygon_alphas,
+                polygon_legend_flags=polygon_legend_flags,
+                point_dfs=point_dfs,
+                point_markers=point_markers,
+                point_colors=point_colors,
+                point_sizes=point_sizes,
+                point_labels=point_labels,
+                point_legend_flags=point_legend_flags,
+                categorized_dfs=categorized_dfs,
+                category_columns=category_columns,
+                category_colors_list=category_colors_list,
+                category_legend_flags=category_legend_flags,
+                buffer_dfs=buffer_dfs,
+                buffer_colors=buffer_colors,
+                buffer_labels=buffer_labels,
+                buffer_alphas=buffer_alphas,
+                buffer_legend_flags=buffer_legend_flags,
+                title=f'Fields within {size} miles of school',
+                figsize=(10, 16)
+            )
 
-    flag_folium = False
+        flag_folium = False
 
-    if flag_folium:
+        if flag_folium:
 
-        m = folium.Map(location=[37.5, -120.8], zoom_start=7)
+            m = folium.Map(location=[37.5, -120.8], zoom_start=7)
 
-        #folium.Marker(
-        #    [39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell"
-        #).add_to(m)
+            #folium.Marker(
+            #    [39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell"
+            #).add_to(m)
 
-        # call to render Folium map in Streamlit
-
-
-
-        # ### geojson map like: https://folium.streamlit.app/geojson_popup, https://python-visualization.github.io/folium/latest/user_guide/geojson/geojson_popup_and_tooltip.html
-        # #GeoJSON popup and tooltip
-        # data = ".\pesticides\data_sources\AgComm_Stanislaus\merged_pur_sites_fieldbds.shp"
-        # pur = geopandas.GeoDataFrame.from_file(data, crs="EPSG:3310")
-
-        # with st.popover("Select column to colorize map"):
-        #     st.write("PUR data: ")
-        #     for i, d in enumerate(ccnames):
-        #         colorcol = st.checkbox(d, key = "colorcol_chkbox1_" + str(i))
-        #         dfc = df.copy()
-            # st.write("Field Bounds Data: ")
-            # for i, d in enumerate(fbs.columns.to_list()):
-            #     colorcol = st.checkbox(str(d), key = "colorcol_chkbox2_" + str(i))
-            #     dfc = fbs.copy()
-            # st.write("Private Schools Data: ")
-            # for  i, d in enumerate(spriv.columns.to_list()):
-            #     colorcol = st.checkbox(str(d), key = "colorcol_chkbox3_" + str(i))
-            #     dfc = spriv.copy()
-            # st.write("Public Schools Data: ")
-            # for  i, d in enumerate(spub.columns.to_list()):
-            #     colorcol = st.checkbox(str(d), key = "colorcol_chkbox4_" + str(i))
-            #     dfc = spub.copy()
+            # call to render Folium map in Streamlit
 
 
 
-        colorcol = "color_category"
-        colorcol_desc = "Aerial Application Product"
-        # if dfc is not None:
-            # if colorcol in dfc.columns.to_list():
+            # ### geojson map like: https://folium.streamlit.app/geojson_popup, https://python-visualization.github.io/folium/latest/user_guide/geojson/geojson_popup_and_tooltip.html
+            # #GeoJSON popup and tooltip
+            # data = ".\pesticides\data_sources\AgComm_Stanislaus\merged_pur_sites_fieldbds.shp"
+            # pur = geopandas.GeoDataFrame.from_file(data, crs="EPSG:3310")
 
-        colormap = branca.colormap.StepColormap(
-            # vmin=dfc[colorcol].quantile(0.0),
-            # vmax=dfc[colorcol].quantile(1),
-            colors=["red", "lightblue", "green", "yellow"],
-            caption=colorcol_desc,
-        )
-
-        m = folium.Map(location=[37.5, -120.86], zoom_start=7)
-
-        popup = folium.GeoJsonPopup(
-            fields=["Site Location", colorcol],
-            aliases=["Site Location", colorcol_desc],
-            localize=True,
-            labels=True,
-            style="background-color: yellow;",
-        )
-
-        tooltip = folium.GeoJsonTooltip(
-            fields=["Site Location", "Application Date", colorcol],
-            aliases=["Site Location", "Application Date", colorcol_desc],
-            localize=True,
-            sticky=False,
-            labels=True,
-            style="""
-                background-color: #F0EFEF;
-                border: 2px solid black;
-                border-radius: 3px;
-                box-shadow: 3px;
-            """,
-            max_width=800,
-        )
-
-
-        # g = folium.GeoJson(
-        #     dfc,
-        #     style_function=lambda x: {
-        #         "fillColor": colormap(x["properties"][colorcol])
-        #         if x["properties"][colorcol] is not None
-        #         else "transparent",
-        #         "color": "black",
-        #         "fillOpacity": 0.4,
-        #     },
-        #     tooltip=tooltip,
-        #     popup=popup,
-        # ).add_to(m)
-
-
-        for _, r in dfc.iterrows():
-            # Without simplifying the representation of each borough,
-            # the map might not be displayed
-            sim_geo = gpd.GeoSeries(r["geometry"]).simplify(tolerance=0.001)
-            geo_j = sim_geo.to_json()
-            geo_j = folium.GeoJson(data=geo_j,
-                style_function=lambda x: {"fillColor": r["color"], "fillOpacity":0.4})
-            folium.Popup(r["color_category"]).add_to(geo_j)
-            geo_j.add_to(m)
-        # m
+            # with st.popover("Select column to colorize map"):
+            #     st.write("PUR data: ")
+            #     for i, d in enumerate(ccnames):
+            #         colorcol = st.checkbox(d, key = "colorcol_chkbox1_" + str(i))
+            #         dfc = df.copy()
+                # st.write("Field Bounds Data: ")
+                # for i, d in enumerate(fbs.columns.to_list()):
+                #     colorcol = st.checkbox(str(d), key = "colorcol_chkbox2_" + str(i))
+                #     dfc = fbs.copy()
+                # st.write("Private Schools Data: ")
+                # for  i, d in enumerate(spriv.columns.to_list()):
+                #     colorcol = st.checkbox(str(d), key = "colorcol_chkbox3_" + str(i))
+                #     dfc = spriv.copy()
+                # st.write("Public Schools Data: ")
+                # for  i, d in enumerate(spub.columns.to_list()):
+                #     colorcol = st.checkbox(str(d), key = "colorcol_chkbox4_" + str(i))
+                #     dfc = spub.copy()
 
 
 
-        # popup = folium.GeoJsonPopup(
-        #     fields=["Site Location", colorcol],
-        #     aliases=["Site Location", colorcol_desc],
-        #     localize=True,
-        #     labels=True,
-        #     style="background-color: yellow;",
-        # )
+            colorcol = "color_category"
+            colorcol_desc = "Aerial Application Product"
+            # if dfc is not None:
+                # if colorcol in dfc.columns.to_list():
 
-        # tooltip = folium.GeoJsonTooltip(
-        #     fields=["Site Location", "Application Date", colorcol],
-        #     aliases=["Site Location", "Application Date", colorcol_desc],
-        #     localize=True,
-        #     sticky=False,
-        #     labels=True,
-        #     style="""
-        #         background-color: #F0EFEF;
-        #         border: 2px solid black;
-        #         border-radius: 3px;
-        #         box-shadow: 3px;
-        #     """,
-        #     max_width=800,
-        # )
+            colormap = branca.colormap.StepColormap(
+                # vmin=dfc[colorcol].quantile(0.0),
+                # vmax=dfc[colorcol].quantile(1),
+                colors=["red", "lightblue", "green", "yellow"],
+                caption=colorcol_desc,
+            )
 
+            m = folium.Map(location=[37.5, -120.86], zoom_start=7)
 
-        g = folium.GeoJson(
-            sprivb,
-            style_function=lambda x: {
-                "color": "black",
-                "fillOpacity": 0.4,
-            },
-        ).add_to(m)
+            popup = folium.GeoJsonPopup(
+                fields=["Site Location", colorcol],
+                aliases=["Site Location", colorcol_desc],
+                localize=True,
+                labels=True,
+                style="background-color: yellow;",
+            )
 
-
-        g2 = folium.GeoJson(
-            spubb,
-            style_function=lambda x: {
-                "color": "green",
-                "fillOpacity": 0.4,
-            },
-        ).add_to(m)
+            tooltip = folium.GeoJsonTooltip(
+                fields=["Site Location", "Application Date", colorcol],
+                aliases=["Site Location", "Application Date", colorcol_desc],
+                localize=True,
+                sticky=False,
+                labels=True,
+                style="""
+                    background-color: #F0EFEF;
+                    border: 2px solid black;
+                    border-radius: 3px;
+                    box-shadow: 3px;
+                """,
+                max_width=800,
+            )
 
 
-        make_legend(m)
-        # folium.LayerControl().add_to(m)  ADDS TOO MANY ALL SHAPES
+            # g = folium.GeoJson(
+            #     dfc,
+            #     style_function=lambda x: {
+            #         "fillColor": colormap(x["properties"][colorcol])
+            #         if x["properties"][colorcol] is not None
+            #         else "transparent",
+            #         "color": "black",
+            #         "fillOpacity": 0.4,
+            #     },
+            #     tooltip=tooltip,
+            #     popup=popup,
+            # ).add_to(m)
 
-        map = st_folium(
-            m,
-            width=620, height=580,
-            key="folium_map"
-        )
 
-        col1, col2, col3, col4 = st.columns([0.25, 0.25, 0.25, 0.25])
-        cccol= [col1, col2, col3, col4]
-        for i in range(4):
-            with cccol[i]:
-                st.write(ccnames[i])
-                st.write(ccl[i])
+            for _, r in dfc.iterrows():
+                # Without simplifying the representation of each borough,
+                # the map might not be displayed
+                sim_geo = gpd.GeoSeries(r["geometry"]).simplify(tolerance=0.001)
+                geo_j = sim_geo.to_json()
+                geo_j = folium.GeoJson(data=geo_j,
+                    style_function=lambda x: {"fillColor": r["color"], "fillOpacity":0.4})
+                folium.Popup(r["color_category"]).add_to(geo_j)
+                geo_j.add_to(m)
+            # m
+
+
+
+            # popup = folium.GeoJsonPopup(
+            #     fields=["Site Location", colorcol],
+            #     aliases=["Site Location", colorcol_desc],
+            #     localize=True,
+            #     labels=True,
+            #     style="background-color: yellow;",
+            # )
+
+            # tooltip = folium.GeoJsonTooltip(
+            #     fields=["Site Location", "Application Date", colorcol],
+            #     aliases=["Site Location", "Application Date", colorcol_desc],
+            #     localize=True,
+            #     sticky=False,
+            #     labels=True,
+            #     style="""
+            #         background-color: #F0EFEF;
+            #         border: 2px solid black;
+            #         border-radius: 3px;
+            #         box-shadow: 3px;
+            #     """,
+            #     max_width=800,
+            # )
+
+
+            g = folium.GeoJson(
+                sprivb,
+                style_function=lambda x: {
+                    "color": "black",
+                    "fillOpacity": 0.4,
+                },
+            ).add_to(m)
+
+
+            g2 = folium.GeoJson(
+                spubb,
+                style_function=lambda x: {
+                    "color": "green",
+                    "fillOpacity": 0.4,
+                },
+            ).add_to(m)
+
+
+            make_legend(m)
+            # folium.LayerControl().add_to(m)  ADDS TOO MANY ALL SHAPES
+
+            map = st_folium(
+                m,
+                width=620, height=580,
+                key="folium_map"
+            )
+
+            col1, col2, col3, col4 = st.columns([0.25, 0.25, 0.25, 0.25])
+            cccol= [col1, col2, col3, col4]
+            for i in range(4):
+                with cccol[i]:
+                    st.write(ccnames[i])
+                    st.write(ccl[i])
