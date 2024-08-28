@@ -218,9 +218,12 @@ if flag_keep_going:
 
     fig.set_size_inches(6, 9)
 
-    st.pyplot(fig, use_container_width = False)
+    st.pyplot(fig)
 
-    st.dataframe(pd.DataFrame(dfc))
+
+
+    dfcg = pd.DataFrame(dfc)
+    st.dataframe(dfcg)
 
 
 flag_folium = False
@@ -233,9 +236,7 @@ if flag_folium:
     #    [39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell"
     #).add_to(m)
 
-    # call to render Folium map in Streamlit
-
-
+    # call to render Folium map in Streamlit\
 
     # ### geojson map like: https://folium.streamlit.app/geojson_popup, https://python-visualization.github.io/folium/latest/user_guide/geojson/geojson_popup_and_tooltip.html
     # #GeoJSON popup and tooltip
