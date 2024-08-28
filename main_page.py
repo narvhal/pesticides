@@ -87,6 +87,7 @@ m = folium.Map(location=[37.5, -120.8], zoom_start=5)
 # #GeoJSON popup and tooltip
 # data = ".\pesticides\data_sources\AgComm_Stanislaus\merged_pur_sites_fieldbds.shp"
 # pur = geopandas.GeoDataFrame.from_file(data, crs="EPSG:3310")
+colorcol = "Product Name"
 
 du = mdf["Product Name"].unique()
 ins = [c for c in du if "insect" in c.lower()]
@@ -107,11 +108,7 @@ dfc = mdf.copy()
 
 ccd2 = {ccnames[i]:ccc[i] for i in range(len(ccnames))}
 # ccd = {ccnames[i]:ccl[i] for i in ccnames}
-dfc = None
-colorcol = None
 
-
-colorcol = "Product Name"
 dfc["color_category"] = dfc[colorcol].map(ccd1)
 dfc["color"] = dfc[colorcol].map(ccd2)
 
