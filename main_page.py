@@ -50,6 +50,7 @@ with lc:
     selection_type = st.radio("Select Products", st_list, key='sel pn or ct')
 
 flag_keep_going= False
+catcol = "color_category"
 
 if selection_type == "Chemical Type":
 
@@ -113,7 +114,7 @@ elif selection_type == "Product Name":
 
 
 
-
+st.write(catcol)
 
 #####################################1111111
 
@@ -151,7 +152,7 @@ if flag_keep_going:
     with rc:
         def get_new_values_list3():
             st.write(st.session_state["Select distance"])
-        size  = st.select_slider('Select distance from Schools (miles)', options=sz_options, on_change =get_new_values_list3, key=key)
+        size  = st.select_slider('Select distance from schools (miles)', options=sz_options, on_change =get_new_values_list3, key=key)
 
     sprivb = school_buffer(spriv, size)
     spubb = school_buffer(spub, size)
@@ -170,10 +171,9 @@ if flag_keep_going:
 
 # st.write(dfc[[colorcol, "color_category", "color"]])
 
-    with lc:
-        if st.checkbox("Plot map", key = "plotmapcheckbx"):
-            st.header("Example Map: Aerial applications")
-
+    if st.checkbox("Plot map", key = "plotmapcheckbx"):
+        st.header("Example Map: Aerial applications")
+        with rc:
             # Example usage:
             # Rectangle in legend:
             polygon_dfs = [fbs]  # List of polygon GeoDataFrames
