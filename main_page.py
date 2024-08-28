@@ -39,8 +39,8 @@ df, fbs = prepare_df_from_stanag()
 #     print_col_uniques(df)
 #################################
 
-def get_new_values_list():
-    st.write(st.session_state[key])
+# def get_new_values_list():
+#     st.write(st.session_state[key])
 
 st_list = ["Chemical Type", "Product Name"]
 lc,mc, rc = st.columns([0.3,0.3, 0.3])
