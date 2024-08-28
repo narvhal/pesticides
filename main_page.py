@@ -169,25 +169,25 @@ if flag_keep_going:
     polygon_colors = ['grey']  # Corresponding colors
     polygon_labels = ['Field Boundaries']  # Corresponding labels
     polygon_alphas = [1]  # Corresponding labels
-    polygon_legend_flags = [True]  # Whether to include in legend
+    polygon_legend_flags = [False]  # Whether to include in legend
 
     point_dfs = [spriv, spub]  # List of point GeoDataFrames
     point_markers = ['*', '*']  # Corresponding markers
     point_colors = ['black', 'green']  # Corresponding colors
     point_sizes = [70, 70]  # Corresponding sizes
     point_labels = ['Private Schools', 'Public Schools']  # Corresponding labels
-    point_legend_flags = [True, True]  # Whether to include in legend
+    point_legend_flags = [False, False]  # Whether to include in legend
 
     categorized_dfs = [dfc]  # List of categorized GeoDataFrames
     category_columns = [catcol]  # List of column names for categories
     category_colors_list = [ccd2]  # List of dictionaries mapping categories to colors
-    category_legend_flags = [True]  # Whether to include in legend
+    category_legend_flags = [False]  # Whether to include in legend
 
     buffer_dfs = [sprivb, spubb]  # List of buffer GeoDataFrames
     buffer_colors = [ 'yellowgreen', 'yellowgreen']  # Buffer colors
     buffer_labels = [f'{size} mile buffer around schools', 'None']  # Buffer labels
     buffer_alphas = [ 0.5, 0.5]  # Buffer transparency
-    buffer_legend_flags = [True, False]  # Whether to include in legend
+    buffer_legend_flags = [False, False]  # Whether to include in legend
 
     fig, ax = plt.subplots()
 
@@ -223,7 +223,7 @@ if flag_keep_going:
 
 
     dfcg = pd.DataFrame(dfc)
-    st.write(type(dfcg))
+    st.write(dfcg)
     # st.dataframe(dfcg)
 
 
