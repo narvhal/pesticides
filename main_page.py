@@ -45,7 +45,7 @@ st_list = ["Chemical Type", "Product Name"]
 # Data vis options:
 selection_type = st.radio("Select Products", st_list)
 
-
+flag_keep_going= False
 if selection_type == "Chemical Type":
 
     ccnames = ["Insecticides", "Herbicides", "Fungicides", "Other"]
@@ -79,7 +79,7 @@ if selection_type == "Chemical Type":
     if st.checkbox("Done selecting"):
 
         dfc = df[df["Product Name"].isin(list(cccddd.keys()))].copy()
-
+        flag_keep_going= True
     catcol = "color_category"
     # dfc["color_category"] = dfc[colorcol].map(ccd1)
     # dfc["color"] = dfc[colorcol].map(ccd2)
@@ -93,7 +93,7 @@ elif selection_type == "Product Name":
         ccc = ["red", "lightblue", "olive", "yellow", "orange"]
         ccd2 = {cname[i]:ccc[i] for i in range(maxsel)}
         catcol = 'Product Name'
-
+        flag_keep_going= True
 
 
 
@@ -122,26 +122,27 @@ elif selection_type == "Product Name":
 # else:
 #     dfn = dfc.copy()
 
-mdf, rdf = add_geometry2(dfc, fbs)
+if flag_keep_going:
 
+    mdf, rdf = add_geometry2(dfc, fbs)
 
-# colormap.add_to(m)
-spriv, spub = prepare_school_pts()
+    # colormap.add_to(m)
+    spriv, spub = prepare_school_pts()
 
-sz_options = np.arange(10)*2 + 0.5
-size  = st.select_slider('Select distance from Schools', options=sz_options)
-spriv = spriv.to_crs(crs =fbs.crs)
-spub = spub.to_crs(crs =fbs.crs)
-sprivb = school_buffer(spriv, size)
-spubb = school_buffer(spub, size)
-# st.write(spriv)
-# st.write(sprivb)
-dfjpriv = join_buf_w_df(sprivb, mdf, howjoin = "inner", pred = "intersects")
-dfjpub = join_buf_w_df(spubb, mdf, howjoin = "inner", pred = "intersects")
-# st.write(dfjpriv)
-df = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=fbs.crs)
-# st.write("Filter applied!")
-#################
+    sz_options = np.arange(10)*2 + 0.5
+    size  = st.select_slider('Select distance from Schools', options=sz_options)
+    spriv = spriv.to_crs(crs =fbs.crs)
+    spub = spub.to_crs(crs =fbs.crs)
+    sprivb = school_buffer(spriv, size)
+    spubb = school_buffer(spub, size)
+    # st.write(spriv)
+    # st.write(sprivb)
+    dfjpriv = join_buf_w_df(sprivb, mdf, howjoin = "inner", pred = "intersects")
+    dfjpub = join_buf_w_df(spubb, mdf, howjoin = "inner", pred = "intersects")
+    # st.write(dfjpriv)
+    df = gpd.GeoDataFrame( pd.concat([dfjpriv, dfjpub], ignore_index=True), crs=fbs.crs)
+    # st.write("Filter applied!")
+    #################
 
 
 
