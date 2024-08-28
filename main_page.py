@@ -90,8 +90,8 @@ if selection_type == "Chemical Type":
         dfc = df[df["Product Name"].isin(list(cccddd.keys()))].copy()
         flag_keep_going= True
     catcol = "color_category"
-    # dfc["color_category"] = dfc[colorcol].map(ccd1)
-    # dfc["color"] = dfc[colorcol].map(ccd2)
+    dfc["color_category"] = dfc[colorcol].map(ccd1)
+    dfc["color"] = dfc[colorcol].map(ccd2)
     # Determing colors
 elif selection_type == "Product Name":
     maxsel = 5
@@ -186,13 +186,13 @@ if flag_keep_going:
             category_colors_list = [ccd2]  # List of dictionaries mapping categories to colors
             category_legend_flags = [True]  # Whether to include in legend
 
-            for df, column, colors, legend_flag in zip(categorized_dfs, category_columns, category_colors_list, category_legend_flags):
-                for category, color in colors.items():
-                    st.write(column)
-                    st.write(category)
-                    st.write(df.columns.to_list())
-                    # st.write(df == dfc)
-                    st.write(type(df[column].iloc[0]))
+            # for df, column, colors, legend_flag in zip(categorized_dfs, category_columns, category_colors_list, category_legend_flags):
+            #     for category, color in colors.items():
+            #         st.write(column)
+            #         st.write(category)
+            #         st.write(df.columns.to_list())
+            #         # st.write(df == dfc)
+            #         st.write(type(df[column].iloc[0]))
                     # st.write(df[column])
                     # st.write(df[df[column]== category])
                     # df[df[column] == category].plot(ax=ax, color=color, label=category)
