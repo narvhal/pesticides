@@ -22,19 +22,19 @@ df, fbs = prepare_df_from_stanag()
 # if st.button("Show filter options"):
 #     print_col_uniques(df)
 
-selcol = None
+selcol = st.empty()
 selcolval = None
 with st.popover("Select filter"):
     for d in df.columns.to_list():
         selcol = st.checkbox(str(d))
-    if selcol is not None:
+    if selcol in df.columns.to_list():
         scu = df[selcol].unique()
         if len(scu)<100:
             for scv in scu:
                 selcolval = st.checkbox(str(scv))
 
-if selcol is not None:
-    if selcol is not None:
+if selcol in df.columns.to_list():
+    if selcolval in df[selcol].unique():
         dfn = filt_df(df, selcol, selcolval, type_compare="==")
         add_geometry2(dfn, fbs)
 
