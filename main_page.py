@@ -190,6 +190,8 @@ if flag_keep_going:
                 for category, color in colors.items():
                     st.write(column)
                     st.write(category)
+                    st.write(df[column])
+                    st.write(df[df[column]== category])
                     # df[df[column] == category].plot(ax=ax, color=color, label=category)
                     # if legend_flag:
                         # category_handle = mpatches.Patch(color=color, label=category)
