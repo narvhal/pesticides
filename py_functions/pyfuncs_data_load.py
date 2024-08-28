@@ -61,7 +61,7 @@ def print_col_uniques(df):
         st.write("\t", len(df[col].unique()), " unique values")
 
 @st.cache_data
-def prepare_school_pts():
+def prepare_school_pts(crs = "EPSG:3310"):
     flag_gh = True
     if flag_gh:
         fpsch_priv = "https://github.com/narvhal/pesticides/raw/main/data_sources/CA_Dept_Education/California_Private_Schools_Stanislaus.geojson"
@@ -73,6 +73,9 @@ def prepare_school_pts():
 
     spriv = gpd.read_file(fpsch_priv)
     spub = gpd.read_file(fpsch_pub)
+
+    spriv = spriv.to_crs(crs =crs)
+    spub = spub.to_crs(crs =crs)
     return spriv, spub
 
 

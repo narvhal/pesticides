@@ -43,7 +43,7 @@ df, fbs = prepare_df_from_stanag()
 st_list = ["Chemical Type", "Product Name"]
 
 # Data vis options:
-selection_type = st.radio("Select Products", st_list)
+selection_type = st.radio("Select Products", st_list, key='sel pn or ct')
 
 flag_keep_going= False
 if selection_type == "Chemical Type":
@@ -76,7 +76,7 @@ if selection_type == "Chemical Type":
 
     ccd2 = {ccnames[i]:ccc[i] for i in range(len(ccnames))}
 
-    if st.checkbox("Done selecting"):
+    if st.checkbox("Done selecting", key='done selecting by type'):
 
         dfc = df[df["Product Name"].isin(list(cccddd.keys()))].copy()
         flag_keep_going= True
@@ -87,7 +87,7 @@ if selection_type == "Chemical Type":
 elif selection_type == "Product Name":
     maxsel = 5
     cname = st.multiselect(f"Select up to {maxsel} Products", df["Product Name"].unique(), max_selections = maxsel)
-    if st.checkbox("Done selecting"):
+    if st.checkbox("Done selecting", key='done selecting pn'):
         dfc = df[df["Product Name"].isin(cname)].copy()
 
         ccc = ["red", "lightblue", "olive", "yellow", "orange"]
@@ -130,9 +130,11 @@ if flag_keep_going:
     spriv, spub = prepare_school_pts()
 
     sz_options = np.arange(10)*2 + 0.5
-    size  = st.select_slider('Select distance from Schools', options=sz_options)
-    spriv = spriv.to_crs(crs =fbs.crs)
-    spub = spub.to_crs(crs =fbs.crs)
+
+    def get_new_values_list():
+        st.write(st.session_state['Select distance from Schools'])
+    size  = st.select_slider('Select distance from Schools', options=sz_options, on_change =get_new_values_list, key='Select distance')
+
     sprivb = school_buffer(spriv, size)
     spubb = school_buffer(spub, size)
     # st.write(spriv)
@@ -146,12 +148,10 @@ if flag_keep_going:
 
 
 
-
 # Filter df even more (this could be done before joining data)
 
 
 
-st.header("Example Map: Aerial applications")
 # center on Liberty Bell, add marker
 
 
@@ -159,6 +159,7 @@ st.header("Example Map: Aerial applications")
 
 
 if st.button("Plot map"):
+    st.header("Example Map: Aerial applications")
 
     # Example usage:
     # Rectangle in legend:
