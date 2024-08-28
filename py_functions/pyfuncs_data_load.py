@@ -30,6 +30,7 @@ def load_standard_colnames():
     loc_narr =  'loc_narr'
     is_active = 'is_active'
     size =  'size'
+    return permittee, site_id, permit_num, permit_yr, loc_narr, is_active, size
 
 def update_colnames(df, dfnewcolsdict):
     for key in list(dfnewcolsdict.keys()):
@@ -91,7 +92,7 @@ def prepare_df_from_stanag():
     pur.drop_duplicates(inplace = True, ignore_index = True)
     fbs.drop_duplicates(inplace = True, ignore_index=True)
 
-    load_standard_colnames()
+    permittee, site_id, permit_num, permit_yr, loc_narr, is_active, size =load_standard_colnames()
 
     pur_newcolnames = {'Permit #': permit_num,
      'Permitee': permittee,

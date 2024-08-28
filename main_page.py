@@ -14,14 +14,7 @@ import fiona
 st.set_page_config(layout="wide" )
 
 
-
-permittee = 'permittee'
-site_id = 'site_id'
-permit_num =  'permit_num'
-permit_yr = 'permit_yr'
-loc_narr =  'loc_narr'
-is_active = 'is_active'
-size =  'size'
+permittee, site_id, permit_num, permit_yr, loc_narr, is_active, size =load_standard_colnames()
 ##########################
 
 df, fbs = prepare_df_from_stanag()
