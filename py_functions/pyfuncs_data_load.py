@@ -75,13 +75,20 @@ def prepare_school_pts():
     spub = gpd.read_file(fpsch_pub)
     return spriv, spub
 
+
+
 @st.cache_data
+def load_fbs():
+    fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
+    fbs = gpd.read_file(fn)
+    return fbs
+
+
 def prepare_df_from_stanag(load_aircraft_delivered_data_only = True):
     #### 2 Hr lesson:: NEED TO RIGHT CLICK ON "Raw" to copy link to download file on GITHUB
     flag_gh = True
     if load_aircraft_delivered_data_only:
-        fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
-        fbs = gpd.read_file(fn)
+        fbs = load_fbs()
 
         # Load aerial data that's already been processed.
         fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/Allsites_2023_pur_ApplMethod_Air.xlsx"
@@ -95,8 +102,7 @@ def prepare_df_from_stanag(load_aircraft_delivered_data_only = True):
 
     else:
         if flag_gh:
-            fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/field_boundaries/Crops_02_12_2024.shp"
-            fbs = gpd.read_file(fn)
+            fbs = load_fbs()
 
             fn = "https://github.com/narvhal/pesticides/raw/main/data_sources/AgComm_Stanislaus/allpurs2023.xlsb"
             pur = pd.read_excel(fn)
