@@ -178,10 +178,10 @@ if flag_keep_going:
     point_labels = ['Private Schools', 'Public Schools']  # Corresponding labels
     point_legend_flags = [False, False]  # Whether to include in legend
 
-    categorized_dfs = [mdf]  # List of categorized GeoDataFrames
-    category_columns = [catcol]  # List of column names for categories
-    category_colors_list = [ccd2]  # List of dictionaries mapping categories to colors
-    category_legend_flags = [False]  # Whether to include in legend
+    categorized_dfs = []  # List of categorized GeoDataFrames
+    category_columns = []  # List of column names for categories
+    category_colors_list = []  # List of dictionaries mapping categories to colors
+    category_legend_flags = []  # Whether to include in legend
 
     buffer_dfs = []  # List of buffer GeoDataFrames
     buffer_colors = []  # Buffer colors
