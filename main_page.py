@@ -190,6 +190,7 @@ if flag_keep_going:
                 for category, color in colors.items():
                     st.write(column)
                     st.write(category)
+                    st.write(df.columns.to_list())
                     # st.write(df == dfc)
                     st.write(type(df[column].iloc[0]))
                     # st.write(df[column])
