@@ -190,7 +190,7 @@ if flag_keep_going:
     buffer_legend_flags = [False, False]  # Whether to include in legend
 
 
-    lc2, cc2, rc2 = st.columns[0.5, 0.2, 0.3]
+    lc2, cc2, rc2 = st.columns([0.5, 0.2, 0.3])
 
     with lc2:
         fig, ax = plt.subplots()
