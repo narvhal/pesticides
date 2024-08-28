@@ -7,7 +7,10 @@ import requests
 import branca
 import numpy as np
 import matplotlib.pyplot as plt
-
+import matplotlib.patches as mpatches
+from matplotlib.lines import Line2D
+from matplotlib_scalebar.scalebar import ScaleBar
+from geodatasets import get_path
 ###########################
 
 # Data filtering widgets
@@ -72,8 +75,8 @@ def prepare_school_pts():
         fpsch_pub ="https://github.com/narvhal/pesticides/raw/main/data_sources/CA_Dept_Education/California_Public_Schools_Stanislaus.geojson"
     else:
         fpsch = r".\pesticides\data_sources\CA_Dept_Education"
-        schl_priv =fpsch + r"\California_Private_Schools.geojson"
-        schl_pub = fpsch + r"\SchoolSites2324_1647203305444761460.geojson"
+        fpsch_priv =fpsch + r"\California_Private_Schools.geojson"
+        fpsch_pub = fpsch + r"\SchoolSites2324_1647203305444761460.geojson"
 
     spriv = gpd.read_file(fpsch_priv)
     spub = gpd.read_file(fpsch_pub)
@@ -210,6 +213,73 @@ def join_buf_w_df(dfb, dfc, howjoin = "inner", pred = "intersects"):
     # Returns dfc WHERE intersects with dfb, i.e. a subset of dfc
     dfj = gpd.sjoin(dfb, dfc, how = howjoin, predicate = pred)
     return dfj
+
+
+
+
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from matplotlib.lines import Line2D
+
+def plot_geopandas_with_legend(
+    polygon_dfs=[], polygon_colors=[], polygon_labels=[],polygon_alphas= [], polygon_legend_flags=[],
+    point_dfs=[], point_markers=[], point_colors=[], point_sizes=[], point_labels=[], point_legend_flags=[],
+    categorized_dfs=[], category_columns=[], category_colors_list=[], category_legend_flags=[],
+    buffer_dfs=[], buffer_colors=[], buffer_labels=[], buffer_alphas=[], buffer_legend_flags=[],
+    title=None, figsize=(10, 16)
+):
+    fig, ax = plt.subplots()
+
+    # Plot the buffer areas if provided
+    buffer_handles = []
+    for df, color, label, alpha, legend_flag in zip(buffer_dfs, buffer_colors, buffer_labels, buffer_alphas, buffer_legend_flags):
+        df.plot(ax=ax, color=color, alpha=alpha, label=label)
+        if legend_flag:
+            buffer_handle = Line2D([0], [0], marker='o', color=color, markerfacecolor=color,
+                                   linestyle='None', alpha=alpha, markersize=15, label=label)
+            buffer_handles.append(buffer_handle)
+
+    # Plot polygon GeoDataFrames with their respective colors and labels
+    polygon_handles = []
+    for df, color, label,alpha, legend_flag in zip(polygon_dfs, polygon_colors, polygon_labels, polygon_alphas, polygon_legend_flags):
+        df.plot(ax=ax, color=color, alpha=alpha, label=label)
+        if legend_flag:
+            polygon_handle = mpatches.Patch(color=color,alpha = alpha, label=label)
+            polygon_handles.append(polygon_handle)
+
+    # Plot categorized data if provided
+    category_handles = []
+    for df, column, colors, legend_flag in zip(categorized_dfs, category_columns, category_colors_list, category_legend_flags):
+        for category, color in colors.items():
+            df[df[column] == category].plot(ax=ax, color=color, label=category)
+            if legend_flag:
+                category_handle = mpatches.Patch(color=color, label=category)
+                category_handles.append(category_handle)
+
+    # Plot point GeoDataFrames with their respective markers, colors, sizes, and labels
+    point_handles = []
+    for df, marker, color, size, label, legend_flag in zip(point_dfs, point_markers, point_colors, point_sizes, point_labels, point_legend_flags):
+        df.plot(ax=ax, marker=marker, markersize=size, color=color, edgecolor='k', label=label)
+        if legend_flag:
+            point_handle = Line2D([0], [0], marker=marker, color='k', markerfacecolor=color,
+                                  linestyle='None', markersize=10, label=label)
+            point_handles.append(point_handle)
+
+    # Combine all handles
+    handles = category_handles + point_handles + polygon_handles + buffer_handles
+
+    # Add the legend to the plot if any handles are present
+    if handles:
+        plt.legend(handles=handles, title=title)
+
+    # Hide the axes
+    ax.axes.get_xaxis().set_visible(False)
+    ax.axes.get_yaxis().set_visible(False)
+
+    # Set figure size
+    fig.set_size_inches(figsize)
+    return fig
 
 
 # copied stoc

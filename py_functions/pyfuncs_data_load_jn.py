@@ -72,9 +72,11 @@ def prepare_school_pts():
         fpsch_priv = "https://github.com/narvhal/pesticides/raw/main/data_sources/CA_Dept_Education/California_Private_Schools_Stanislaus.geojson"
         fpsch_pub ="https://github.com/narvhal/pesticides/raw/main/data_sources/CA_Dept_Education/California_Public_Schools_Stanislaus.geojson"
     else:
-        fpsch = r".\pesticides\data_sources\CA_Dept_Education"
-        schl_priv =fpsch + r"\California_Private_Schools.geojson"
-        schl_pub = fpsch + r"\SchoolSites2324_1647203305444761460.geojson"
+        fpsch = r"C:\Users\nariv\OneDrive\JupyterN\streamlit_local\pesticides\data_sources\CA_Dept_Education"
+        # Filtered for Stanislaus County
+
+        fpsch_priv =fpsch + r"\California_Private_Schools_Stanislaus.geojson"
+        fpsch_pub = fpsch + r"\California_Public_Schools_Stanislaus.geojson"
 
     spriv = gpd.read_file(fpsch_priv)
     spub = gpd.read_file(fpsch_pub)
