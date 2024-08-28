@@ -259,8 +259,6 @@ def plot_geopandas_with_legend(
     category_handles = []
     for df, column, colors, legend_flag in zip(categorized_dfs, category_columns, category_colors_list, category_legend_flags):
         for category, color in colors.items():
-            st.write(column)
-            st.write(category)
             df[df[column] == category].plot(ax=ax, color=color, label=category)
             if legend_flag:
                 category_handle = mpatches.Patch(color=color, label=category)

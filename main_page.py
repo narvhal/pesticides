@@ -83,8 +83,7 @@ if selection_type == "Chemical Type":
     for cn in cname:
         ix = cndd[cn]
         cccddd.update(ccdd[ix])
-
-    ccd2 = {ccnames[i]:ccc[i] for i in range(len(ccnames))}
+        ccd2 = {ccnames[ix]:ccc[ix] for i in range(len(cname))}
 
     if st.checkbox("Done selecting", key='done selecting by type'):
 
