@@ -234,7 +234,7 @@ def plot_geopandas_with_legend(fig, ax,
     point_dfs=[], point_markers=[], point_colors=[], point_sizes=[], point_labels=[], point_legend_flags=[],
     categorized_dfs=[], category_columns=[], category_colors_list=[], category_legend_flags=[],
     buffer_dfs=[], buffer_colors=[], buffer_labels=[], buffer_alphas=[], buffer_legend_flags=[],
-    title=None, figsize=(10, 16)
+    title=None, figsize=[10, 16]
 ):
 
 
@@ -286,7 +286,7 @@ def plot_geopandas_with_legend(fig, ax,
     ax.axes.get_yaxis().set_visible(False)
 
     # Set figure size
-    fig.set_size_inches(figsize)
+    fig.set_size_inches(figsize[0], figsize[1])
     return fig
 
 
