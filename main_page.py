@@ -190,7 +190,7 @@ if flag_keep_going:
                 for category, color in colors.items():
                     st.write(column)
                     st.write(category)
-                    st.write(dfc)
+                    st.write(df == dfc)
                     st.write(df)
                     st.write(df[column])
                     # st.write(df[df[column]== category])
