@@ -21,8 +21,8 @@ st.set_page_config(layout="wide" )
 toc = stoc()
 
 # Title
-st.title("Stanislaus County Pesticide Use Reports and School Locations")
-
+st.title("Pesticide Use Reports and School Locations")
+st.header("Stanislaus County")
 
 # st.header("1. Select filters")
 

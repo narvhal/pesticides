@@ -209,7 +209,6 @@ def add_geometry2(df, gdf, on = ['site_id', 'permit_num']):
 
     return merged_gdfsm, reject_df
 
-@st.cache_data
 def school_buffer(df, size):
     # Assume input size is in "miles"
     # Convert to meters for projected map
@@ -219,9 +218,6 @@ def school_buffer(df, size):
     return dfb
 
 
-
-
-@st.cache_data
 def join_buf_w_df(dfb, dfc, howjoin = "inner", pred = "intersects"):
     # Returns dfc WHERE intersects with dfb, i.e. a subset of dfc
     dfj = gpd.sjoin(dfb, dfc, how = howjoin, predicate = pred)
