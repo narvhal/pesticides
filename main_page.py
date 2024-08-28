@@ -298,7 +298,7 @@ if flag_keep_going:
     # st.write(dfcg)
 
     for i, pn in enumerate(df["Product Name"]):
-        st.write(str(i+ 1) +", Product: " +  pn + ", Quantity Used: " + str(df["Quantity Used"].iloc[i] )+ " " + df["Quantity Units"].iloc[i]+ ", Application Date: "+ df["Application Date"])
+        st.write(str(i+ 1) +", Product: " +  pn + ", Quantity Used: " + str(df["Quantity Used"].iloc[i] )+ " " + df["Quantity Units"].iloc[i]+ ", Application Date: "+ str(df["Application Date"]))
 #
 
 flag_folium = False
