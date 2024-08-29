@@ -93,13 +93,13 @@ if selection_type == "Chemical Type":
         dfc["color"] = dfc[colorcol].map(ccd2)
     # Determing colors
 elif selection_type == "Product Name":
-    maxsel = 5
+    maxsel = 6
     key = "multisel_products2"
     with mc:
         def get_new_values_list2():
             st.session_state["multisel_products2"]
 
-        cname = st.multiselect(f"Select up to {maxsel} Products", df["Product Name"].unique(), max_selections = maxsel, on_change = get_new_values_list2, key = key)
+        cname = st.multiselect(f"Select up to {maxsel-1} Products", df["Product Name"].unique(), max_selections = maxsel, on_change = get_new_values_list2, key = key)
     if st.checkbox("Done selecting", key='done selecting pn'):
         dfc = df[df["Product Name"].isin(cname)].copy()
 
