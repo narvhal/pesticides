@@ -104,7 +104,7 @@ elif selection_type == "Product Name":
         dfc = df[df["Product Name"].isin(cname)].copy()
 
         ccc = ["red", "lightblue", "olive", "yellow", "orange"]
-        ccd2 = {cname[i]:ccc[i] for i in range(maxsel)}
+        ccd2 = {cname[i]:ccc[i] for i in range(len(cname))}
         catcol = 'Product Name'
         flag_keep_going= True
 
